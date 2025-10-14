@@ -1,5 +1,5 @@
 import React from "react";
-import "./header.css";
+import "../estilos/header.css";
 import logo from "../assets/logo.png";
 
 const Header: React.FC = () => {

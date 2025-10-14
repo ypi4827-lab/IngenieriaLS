@@ -1,5 +1,5 @@
 import React from "react";
-import "./botones.css";
+import "../estilos/botones.css";
                 
 const Botones: React.FC = () => {
   return (
