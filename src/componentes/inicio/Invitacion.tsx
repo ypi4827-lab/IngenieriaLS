@@ -1,5 +1,5 @@
 import React from "react";
-import "../estilos/invitacion.css";
+import "../../estilos/invitacion.css";
 
 const Invitacion: React.FC = () => {
   return (

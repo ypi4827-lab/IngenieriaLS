@@ -1,6 +1,6 @@
 import React from "react";
-import "../estilos/Encabezado.css";
-import logo from "../assets/logo.png";
+import "../../estilos/Encabezado.css";
+import logo from "../../assets/logo.png";
 
 const Encabezado: React.FC = () => {
   return (

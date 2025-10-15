@@ -1,11 +1,11 @@
 import React from "react";
-import "../estilos/botones.css";
+import "../../estilos/botones.css";
                 
 const Botones: React.FC = () => {
   return (
     <div className="buttons">
-      <button className="btn-productos">PRODUCTOS</button>
-      <button className="btn-servicios">SERVICIOS</button>
+      <a href="/productos"><button className="btn-productos">PRODUCTOS</button></a>
+      <a href="/servicios"><button className="btn-servicios">SERVICIOS</button></a>
     </div>
   );
 };

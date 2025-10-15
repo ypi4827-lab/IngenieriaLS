@@ -1,8 +1,8 @@
 import React from "react";
-import "../estilos/ListaProductos.css";
-import bascula from "../assets/bascula.png";
-import sierra from "../assets/sierra.png";
-import balanza from "../assets/balanza.png";
+import "../../estilos/ListaProductos.css";
+import bascula from "../../assets/bascula 1.jpg";
+import sierra from "../../assets/sierra1.jpg";
+import balanza from "../../assets/balanza 1.jpg";
 
 const ListaProductos: React.FC = () => {
   return (

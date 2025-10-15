@@ -5,9 +5,9 @@ import ListaProductos from "../componentes/productos/ListaProductos";
 function Productos() {
   return (
     <>
-      <Botones></Botones>
-      <ListaProductos></ListaProductos>
       <Encabezado></Encabezado>
+      <ListaProductos></ListaProductos>
+      <Botones></Botones>
     </>
   )
 } 
