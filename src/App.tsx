@@ -1,15 +1,15 @@
 import React from "react";
 import "./App.css";
 import Header from "./componentes/Header";
-import Invitacion from "./componentes/Invitacion";
-import Botones from "./componentes/Botones";
+import Home from "./paginas/Home"
+import Productos from "./paginas/Productos"
 
 const App: React.FC = () => {
   return (
     <div className="app">
       <Header />
-      <Invitacion />
-      <Botones />
+      <Home />
+      <Productos />    
     </div>
   );
 };
