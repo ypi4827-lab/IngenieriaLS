@@ -1,4 +1,4 @@
-import Botones from "../componentes/productos/Botones";
+import Botones from "../componentes/Botones";
 import ListaProductos from "../componentes/productos/ListaProductos";
 
 function Productos() {
