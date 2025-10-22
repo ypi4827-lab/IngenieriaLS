@@ -1,9 +1,10 @@
 .botones {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 15px;
-  margin-top: 20px;
+  margin: 20px;
 }
 
 button {
@@ -17,13 +18,13 @@ button {
 }
 
 .btn-productos {
-  background-color: transparent;
-  color: red;
+  background-color: #a5d8ff;
+  color: green;
 }
 
 .btn-servicios {
-  background-color: transparent;
-  color: red;
+  background-color: #a5d8ff;
+  color: green;
 }
 
 button:hover {

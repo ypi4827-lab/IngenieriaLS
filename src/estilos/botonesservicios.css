@@ -6,7 +6,7 @@
   margin-top: 10px;
 }
 
-.btn-registrarse {
+.botones-servicios>.enlace-boton>.btn-registrarse {
   background-color: #0014ff;
   color: #fff;
   font-weight: bold;
@@ -14,23 +14,23 @@
   border-radius: 8px;
   padding: 12px 18px;
   cursor: pointer;
-  width: 90%;
+  width: 100%;
 }
 
-.btn-registrarse:hover {
+.botones-servicios>.enlace-boton>.btn-registrarse:hover {
   background-color: #0010b8;
 }
 
-.btn-volver {
+.botones-servicios>.enlace-boton>.btn-volver {
   background-color: #2ecc71;
   color: #fff;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
   cursor: pointer;
-  width: 80%;
+  width: 100%;
 }
 
-.btn-volver:hover {
+.botones-servicios>.enlace-boton>.btn-volver:hover {
   background-color: #27ae60;
 }
