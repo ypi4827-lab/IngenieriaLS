@@ -4,8 +4,8 @@ import "../../estilos/botonessesion.css";
 const Botones: React.FC = () => {
   return (
     <div className="botones-sesion">
-      <button className="btn-iniciar">Iniciar sesión</button>
-      <a className="btn-atras" href="/"<button className="btn-atras">Atrás</button>
+      <a className="enlace-boton" href="/iniciarsesion"><button className="btn-iniciar">Iniciar sesión</button></a>
+      <button onClick={() => window.history.back()} className="btn-atras">Atrás</button>
     </div>
   );
 };

@@ -5,16 +5,23 @@ const Formulario: React.FC = () => {
   return (
     <form className="formulario-registro">
       <label>Nombre completo</label>
-      <input type="text" placeholder="Tu nombre" />
+      <input required type="text" placeholder="Tu nombre" />
 
       <label>Correo electrónico</label>
-      <input type="email" placeholder="tucorreo@ejemplo.com" />
+      <input required type="email" placeholder="tucorreo@ejemplo.com" />
 
+      <label>Tipo de acceso</label>
+      <select>
+        <option value="">Selecciona una opción</option>
+        <option value="administrador">Administrador</option>
+        <option value="tecnico">Tecnico</option>
+        <option value="asesor">Asesor</option>
+      </select>      
       <label>Contraseña</label>
-      <input type="password" placeholder="********" />
+      <input required type="password" placeholder="********" />
 
       <label>Confirmar contraseña</label>
-      <input type="password" placeholder="********" />
+      <input required type="password" placeholder="********" />
     </form>
   );
 };

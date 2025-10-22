@@ -1,6 +1,5 @@
 import React from "react";
 import "../estilos/Registro.css";
-import logo from "../assets/logo.png";
 import BotonesSociales from "../componentes/registro/BotonesSociales";
 import Formulario from "../componentes/registro/Formulario";
 import Botones from "../componentes/registro/Botones";
@@ -8,8 +7,7 @@ import Botones from "../componentes/registro/Botones";
 const Registro: React.FC = () => {
   return (
     <div className="pagina-registro">
-      <img src={logo} alt="Logo Ingeniería LS" className="logo-registro" />
-      <BotonesSociales />
+            <BotonesSociales />
       <Formulario />
       <Botones />
     </div>

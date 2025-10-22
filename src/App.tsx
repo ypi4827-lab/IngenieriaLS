@@ -7,6 +7,8 @@ import Productos from "./paginas/Productos"
 import Servicios from "./paginas/Servicios";
 import Registro from "./paginas/Registro";
 import IniciarSesion from "./paginas/IniciarSesion";
+import FormularioSesion from "./paginas/FormularioSesion";
+import Recuperacion from "./paginas/Recuperacion";
 
 const App: React.FC = () => {
   return (
@@ -17,7 +19,9 @@ const App: React.FC = () => {
         <Route path="/productos" element={<Productos />} />
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/iniciarsesion" element={<IniciarSesion />} />
+        <Route path="/ingreso" element={<IniciarSesion />} />
+        <Route path="/iniciarsesion" element={<FormularioSesion />} />
+        <Route path="/recuperacion" element={<Recuperacion />} />
       </Routes>    
     </div>
   );
