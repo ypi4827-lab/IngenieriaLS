@@ -9,6 +9,7 @@ import Registro from "./paginas/Registro";
 import IniciarSesion from "./paginas/IniciarSesion";
 import FormularioSesion from "./paginas/FormularioSesion";
 import Recuperacion from "./paginas/Recuperacion";
+import Cambiarcontraseña from "./paginas/Cambiarcontraseña";
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <Route path="/ingreso" element={<IniciarSesion />} />
         <Route path="/iniciarsesion" element={<FormularioSesion />} />
         <Route path="/recuperacion" element={<Recuperacion />} />
+        <Route path="/cambiarcontraseña" element={<Cambiarcontraseña />} />
       </Routes>    
     </div>
   );
