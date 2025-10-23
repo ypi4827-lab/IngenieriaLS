@@ -4,7 +4,7 @@ import "../../estilos/botonenviar.css";
 const BotonEnviar: React.FC = () => {
   return (
     <div className="contenedor-boton">
-      <a href="/iniciarsesion" className="enlace-boton">
+      <a href="/cambiarcontraseña" className="enlace-boton">
         <button className="btn-enviar">Enviar</button>
       </a>
       <a href="/iniciarsesion" className="enlace-boton">
