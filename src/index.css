@@ -11,6 +11,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-principal: #f2b6d0;
+  --color-secundario: #a3d9ff;
+  --color-texto: #222;
+  --color-boton: #f2b6d0;
+  --color-boton-hover: #f7a5c0;
+  --color-boton-atras: #2ecc71;
+  --color-boton-atras-hover: #27ae60;
+  --color-boton-gris: #c6c2f2;
+  --color-boton-gris-hover: #574be1;
+  --radio: 8px;
+  --fuente: 'Arial', sans-serif;
 }
 
 a {

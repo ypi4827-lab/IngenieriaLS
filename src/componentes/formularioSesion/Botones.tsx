@@ -1,11 +1,12 @@
 import React from "react";
 import "../../estilos/botonesinicio.css";
+import Boton from "../comunes/Boton";
 
 const Botones: React.FC = () => {
   return (
     <>
     <div className="botones-login">
-      <button onClick={() => window.history.back()} className="btn-atras">Atrás</button>
+      <Boton classProp="btn-atras" texto="Atrás" onClick={() => window.history.back()} />
     </div>
     <div className="enlace-recuperar">
       <a href="/recuperacion" className="texto-recuperar">

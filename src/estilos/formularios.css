@@ -1,0 +1,16 @@
+.formulario-base {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px 0;
+  max-width: 400px;
+  width: 90%;
+  margin: 0px auto;
+}
+
+.formulario-base h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}

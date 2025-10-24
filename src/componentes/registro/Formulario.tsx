@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import '../../estilos/FormularioRegistro.css';
+import FormularioBase from '../comunes/FormularioBase';
+import CampoTexto from '../comunes/CampoTexto';
+import SelectRol from '../comunes/SelectRol';
+import CampoContraseña from '../comunes/CampoContraseña';
+import Boton from '../comunes/Boton';
 
 const Formulario: React.FC = () => {
   const [nombre, setNombre] = useState('');
@@ -24,57 +28,45 @@ const Formulario: React.FC = () => {
     alert('Registro exitoso');
   };
   return (
-    <form className="formulario-registro">
-      <label>Nombre completo</label>
-      <input
-        required
+    <FormularioBase titulo="Registro de nuevo usuario">
+      <CampoTexto
+        label="Nombre completo"
+        type="text"
         value={nombre}
         onChange={(e) => setNombre(e.target.value)}
-        type="text"
         placeholder="Tu nombre"
       />
-
-      <label>Correo electrónico</label>
-      <input
-        required
+      <CampoTexto
+        label="Correo electrónico"
+        type="email"
         value={correo}
         onChange={(e) => setCorreo(e.target.value)}
-        type="email"
         placeholder="tucorreo@ejemplo.com"
       />
 
-      <label>Tipo de acceso</label>
-      <select
+      <SelectRol
         value={tipoAcceso}
         onChange={(e) => setAcceso(e.target.value)}
-        required
-      >
-        <option value="">Selecciona una opción</option>
-        <option value="administrador">Administrador</option>
-        <option value="tecnico">Tecnico</option>
-        <option value="asesor">Asesor</option>
-      </select>
-      <label>Contraseña</label>
-      <input
-        required
-        value={contraseña}
-        onChange={(e) => setContraseña(e.target.value)}
-        type="password"
-        placeholder="********"
       />
 
-      <label>Confirmar contraseña</label>
-      <input
-        required
+      <CampoContraseña
+        label="Contraseña"
+        value={contraseña}
+        onChange={(e) => setContraseña(e.target.value)}
+      />
+      <CampoContraseña
+        label="Confirmar Contraseña"
         value={confirmarContraseña}
         onChange={(e) => setConfirmarContraseña(e.target.value)}
-        type="password"
-        placeholder="********"
       />
-      <button onClick={registrarse} type="submit" className="btn-registrarse">
-        Registrarse
-      </button>
-    </form>
+
+      <Boton
+        onClick={() => registrarse}
+        tipo="submit"
+        classProp="btn-verde"
+        texto="Registrarse"
+      ></Boton>
+    </FormularioBase>
   );
 };
 

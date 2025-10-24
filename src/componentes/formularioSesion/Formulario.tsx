@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import '../../estilos/formulariosesion.css';
+import FormularioBase from '../comunes/FormularioBase';
+import CampoTexto from '../comunes/CampoTexto';
+import CampoContraseña from '../comunes/CampoContraseña';
+import Boton from '../comunes/Boton';
 
 const Formulario: React.FC = () => {
   const [usuario, setUsuario] = useState('');
@@ -10,31 +14,32 @@ const Formulario: React.FC = () => {
     const datosUsuario = {
       usuario,
       contraseña,
-    }
+    };
     localStorage.setItem(usuario, JSON.stringify(datosUsuario));
     alert('Inicio de sesión exitoso');
-  }
+  };
   return (
-    <form className="formulario-login">
-      <label htmlFor="">Usuario</label>
-      <input
-        required
+    <FormularioBase titulo="Iniciar sesión">
+      <CampoTexto
+        label="Usuario"
+        type="text"
         value={usuario}
         onChange={(e) => setUsuario(e.target.value)}
-        type="text"
         placeholder="Ingresa tu usuario"
       />
-
-      <label>Contraseña</label>
-      <input
-        required
+      <CampoContraseña
+        label="Contraseña"
         value={contraseña}
         onChange={(e) => setContraseña(e.target.value)}
-        type="password"
-        placeholder="********"
       />
-      <button onClick={iniciarSesion}  type="submit" className="btn-iniciar">Iniciar sesión</button>
-    </form>
+
+      <Boton
+        texto="Iniciar sesión"
+        tipo="submit"
+        classProp="btn-iniciar"
+        onClick={() => iniciarSesion}
+      />
+    </FormularioBase>
   );
 };
 
