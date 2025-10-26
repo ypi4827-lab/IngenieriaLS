@@ -1,6 +1,6 @@
 import React from "react";
 import "../../estilos/botones.css";
-                
+
 const Botones: React.FC = () => {
   return (
     <div className="botones">

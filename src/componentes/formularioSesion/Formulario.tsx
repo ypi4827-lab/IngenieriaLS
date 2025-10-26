@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../estilos/formulariosesion.css';
 import FormularioBase from '../comunes/FormularioBase';
 import CampoTexto from '../comunes/CampoTexto';
 import CampoContraseña from '../comunes/CampoContraseña';

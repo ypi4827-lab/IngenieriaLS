@@ -1,5 +1,4 @@
 import React from "react";
-import "../../estilos/botonessesion.css";
 
 const Botones: React.FC = () => {
   return (
