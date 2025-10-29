@@ -1,14 +1,18 @@
-import React from "react";
-import "../estilos/header.css";
-import logo from "../assets/logo.png";
+import React from 'react';
+import '../estilos/header.css';
+import logo from '../assets/logo.png';
 
 const Header: React.FC = () => {
   return (
     <header className="header">
-      <img src={logo} alt="Logo Ingeniería LS" className="logo" />
-      <h2>Bienvenidos</h2>
-      <h3>a INGENIERIA LS</h3>
+      <img
+        onClick={() => (window.location.href = '/')}
+        src={logo}
+        alt="Logo Ingeniería LS"
+        className="logo"
+      />
+      <h2>Bienvenidos <br className='header-spacing' /> A INGENIERIA LS</h2>
     </header>
   );
 };
-export default Header; 
+export default Header;

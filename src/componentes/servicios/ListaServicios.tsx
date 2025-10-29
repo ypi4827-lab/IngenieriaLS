@@ -6,7 +6,7 @@ const ListaServicios: React.FC = () => {
     <section className="lista-servicios">
       <div className="servicio">
         <p>
-          <span className="icono">🔧</span> <strong>Mantenimiento técnico especializado</strong><br />
+          <span className="icono">⚒️</span> <strong>Mantenimiento técnico especializado</strong><br />
           Revisamos y reparamos tus equipos con precisión y rapidez.
         </p>
       </div>

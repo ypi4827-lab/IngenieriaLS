@@ -27,3 +27,24 @@
   font-weight: 500;
   color: #000;
 }
+
+@media (min-width: 1000px) {
+  .lista-servicios {
+    width: 98%;
+  }
+  .servicio {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .servicio p {
+    font-size: 1.7rem;
+  }
+  .icono {
+    font-size: 2.5rem;
+    margin-right: 8px;
+  }
+  .pregunta {
+    font-size: 1.7rem;
+  }
+}

@@ -10,7 +10,20 @@
   border-radius: 50%;
 }
 
-h2, h3 {
+h2 {
   margin: 5px 0;
-  font-family: "Arial", sans-serif;
+  font-family: 'Arial', sans-serif;
+}
+
+.header-spacing {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 0 auto;
+  }
 }

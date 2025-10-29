@@ -80,3 +80,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@media (min-width: 1000px) {
+  h2 {
+    font-size: 3rem;
+  }
+  p {
+    font-size: 1.7rem;
+  }
+}

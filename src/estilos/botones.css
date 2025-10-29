@@ -15,6 +15,9 @@
   background-color: #a5d8ff;
   color: green;
 }
+.botones button:hover {
+  background-color: #74c0fc;
+}
 
 .botones-servicios {
   display: flex;

@@ -41,17 +41,23 @@
 }
 
 .btn-ojito {
-  position: absolute;
-  right: -110px;
-  top: 50%;
+  position: relative;
+  right: -95px;
+  top: -20px;
   transform: translateY(-50%);
   background: transparent;
   border: none;
   cursor: pointer;
   font-size: 1.1rem;
   color: #444;
+  width: 5px;
+  padding: 0;
 }
 
 .btn-ojito:hover {
   color: #000;
+}
+
+.btn-ojito:focus {
+  outline: none;
 }

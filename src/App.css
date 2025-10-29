@@ -1,7 +1,7 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
   text-align: center;
+  width: 100vw;
+  color: black;
 }
 
 .logo {
@@ -38,4 +38,20 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.app {
+  background: linear-gradient(to bottom, #a3d9ff, #f2b6d0);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Arial", sans-serif;
+  padding-bottom: 30px;
+}
+
+@media (min-width: 1000px) {
+  .app {
+    align-items: start;
+  }
 }
