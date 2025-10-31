@@ -22,6 +22,7 @@ const Recuperacion: React.FC = () => {
         placeholder="ejemplo@correo.com"
       />
       <Boton classProp="btn-recuperacion" texto="Enviar" onClick={enviar} />
+      <Boton texto="Atrás" onClick={() => window.history.back()} />
     </FormularioBase>
   );
 };

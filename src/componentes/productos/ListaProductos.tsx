@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../estilos/ListaProductos.css';
+import Boton from '../comunes/Boton';
 import bascula1 from '../../assets/bascula 1.png';
 import bascula2 from '../../assets/bascula 2.png';
 import bascula3 from '../../assets/bascula 3.png';
@@ -48,6 +49,9 @@ const ListaProductos: React.FC = () => {
           <img src={i} alt="Balanza comercial" />
         ))}
       </div>
+      {window.location.pathname === '/productos' && (
+        <Boton texto="Atrás" onClick={() => window.history.back()} />
+      )}
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../estilos/iniciarsesion.css"
 import Formulario from "../componentes/formularioSesion/Formulario";
 import Botones from "../componentes/formularioSesion/Botones";
 

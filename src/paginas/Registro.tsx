@@ -8,7 +8,7 @@ const Registro: React.FC = () => {
   return (
     <div className="pagina-registro">
       <BotonesSociales />
-      <Formulario /> 
+      <Formulario />
       <div className="botones-registro">
         <div className="fila-botones">
           <Boton
