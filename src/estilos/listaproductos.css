@@ -1,6 +1,7 @@
 .productos {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin: 15px;
 }
@@ -22,14 +23,13 @@
   color: #000;
   margin: 5px;
 }
-@media (min-width: 1000px) {
-  .productos {
-    align-items: start;
-    width: 98%;
-  }
-  .productos h2 {
+.productos h2 {
     color: #002b7f;
     font-weight: 800;
+  }
+@media (min-width: 1000px) {
+  .productos {
+    width: 98%;
   }
   .producto {
     width: 100%;

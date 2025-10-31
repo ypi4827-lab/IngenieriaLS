@@ -11,6 +11,16 @@
 
 .formulario-base h2 {
   text-align: center;
-  color: #333;
+  color: #002b7f;
+  font-weight: 800;
   margin-bottom: 20px;
+}
+
+@media (min-width: 1000px) {
+  .formulario-base {
+    max-width: 900px;
+  }
+  .formulario-base h2 {
+    font-size: 3rem
+  }
 }
