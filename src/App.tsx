@@ -10,6 +10,8 @@ import IniciarSesion from './paginas/IniciarSesion';
 import Recuperacion from './paginas/Recuperacion';
 import Footer from './componentes/Footer';
 import Cambiarcontraseña from './paginas/Cambiarcontraseña';
+import Perfil from './paginas/Perfil';
+import Boton from './componentes/comunes/Boton';
 
 const App: React.FC = () => {
   return (
@@ -23,6 +25,20 @@ const App: React.FC = () => {
         <Route path="/ingreso" element={<IniciarSesion />} />
         <Route path="/recuperacion" element={<Recuperacion />} />
         <Route path="/cambiarcontraseña" element={<Cambiarcontraseña />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route
+          path="*"
+          element={
+            <>
+              <h2>Página no encontrada</h2>
+              <Boton
+                texto="Volver al inicio"
+                enlace="/"
+                classProp="btn-volver-inicio"
+              />
+            </>
+          }
+        />
       </Routes>
       <Footer />
     </div>

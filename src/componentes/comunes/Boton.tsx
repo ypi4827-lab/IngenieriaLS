@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../estilos/botones.css';
+import { Link } from 'react-router-dom';
 
 interface Props {
   texto: string;
@@ -19,11 +20,11 @@ const Boton: React.FC<Props> = ({
   const clases = `btn-general ${classProp}`.trim();
   if (enlace) {
     return (
-      <a href={enlace} className="enlace-boton">
+      <Link to={enlace} className="enlace-boton">
         <button type={tipo} className={clases} onClick={onClick}>
           {texto}
         </button>
-      </a>
+      </Link>
     );
   }
   return (

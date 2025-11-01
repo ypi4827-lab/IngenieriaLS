@@ -1,11 +1,12 @@
 import React from "react";
 import "../../estilos/botones.css";
+import { Link } from "react-router-dom";
 
 const Botones: React.FC = () => {
   return (
     <div className="botones">
-      <a href="/productos"><button className="btn-productos">PRODUCTOS</button></a>
-      <a href="/servicios"><button className="btn-servicios">SERVICIOS</button></a>
+      <Link to="/productos"><button className="btn-productos">PRODUCTOS</button></Link>
+      <Link to="/servicios"><button className="btn-servicios">SERVICIOS</button></Link>
     </div>
   );
 };

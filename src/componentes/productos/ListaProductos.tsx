@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../estilos/ListaProductos.css';
 import Boton from '../comunes/Boton';
 import bascula1 from '../../assets/bascula 1.png';
@@ -12,6 +13,8 @@ import balanza2 from '../../assets/balanza 2.png';
 import balanza3 from '../../assets/balanza 3.png';
 
 const ListaProductos: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const imagenesBasculas = [bascula1, bascula2, bascula3];
   const imagenesSierras = [sierra1, sierra2, sierra3];
   const imagenesBalanzas = [balanza1, balanza2, balanza3];
@@ -49,8 +52,8 @@ const ListaProductos: React.FC = () => {
           <img src={i} alt="Balanza comercial" />
         ))}
       </div>
-      {window.location.pathname === '/productos' && (
-        <Boton texto="Atrás" onClick={() => window.history.back()} />
+      {location.pathname === '/productos' && (
+        <Boton texto="Atrás" onClick={() => navigate(-1)} />
       )}
     </section>
   );

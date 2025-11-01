@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FormularioBase from '../comunes/FormularioBase';
 import CampoTexto from '../comunes/CampoTexto';
 import CampoContraseña from '../comunes/CampoContraseña';
 import Boton from '../comunes/Boton';
 
 const Formulario: React.FC = () => {
+  const navigate = useNavigate();
   const [usuario, setUsuario] = useState('');
   const [contraseña, setContraseña] = useState('');
 
@@ -16,6 +18,7 @@ const Formulario: React.FC = () => {
     };
     localStorage.setItem(usuario, JSON.stringify(datosUsuario));
     alert('Inicio de sesión exitoso');
+    navigate('/perfil');
   };
   return (
     <FormularioBase titulo="Iniciar sesión">

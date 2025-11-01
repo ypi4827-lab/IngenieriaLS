@@ -1,8 +1,12 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../estilos/ListaServicios.css';
 import Boton from '../comunes/Boton';
 
 const ListaServicios: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <section className="lista-servicios">
       <div className="servicio">
@@ -34,9 +38,9 @@ const ListaServicios: React.FC = () => {
 
       <p className="pregunta">
         ¿Quieres conocer tarifas, disponibilidad o agendar una visita?
-      </p>  
-      {window.location.pathname === '/servicios' && (
-        <Boton texto="Atrás" onClick={() => window.history.back()} />
+      </p>
+      {location.pathname === '/servicios' && (
+        <Boton texto="Atrás" onClick={() => navigate(-1)} />
       )}
     </section>
   );
