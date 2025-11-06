@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import FormularioBase from '../comunes/FormularioBase';
 import CampoTexto from '../comunes/CampoTexto';
-import SelectRol from '../comunes/SelectRol';
 import CampoContraseña from '../comunes/CampoContraseña';
+import CampoTelefono from '../comunes/CampoTelefono';
 import Boton from '../comunes/Boton';
 
 const Formulario: React.FC = () => {
   const [nombre, setNombre] = useState('');
   const [correo, setCorreo] = useState('');
-  const [tipoAcceso, setAcceso] = useState('');
+  const [telefono, setTelefono] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [confirmarContraseña, setConfirmarContraseña] = useState('');
 
@@ -21,7 +21,8 @@ const Formulario: React.FC = () => {
     const nuevoUsuario = {
       nombre,
       correo,
-      tipoAcceso,
+      telefono,
+      TipoAcceso: "cliente",
       contraseña,
     };
     localStorage.setItem(nombre, JSON.stringify(nuevoUsuario));
@@ -43,12 +44,10 @@ const Formulario: React.FC = () => {
         onChange={(e) => setCorreo(e.target.value)}
         placeholder="tucorreo@ejemplo.com"
       />
-
-      <SelectRol
-        value={tipoAcceso}
-        onChange={(e) => setAcceso(e.target.value)}
+      <CampoTelefono
+        value={telefono}
+        onChange={(e) => setTelefono(e.target.value)}
       />
-
       <CampoContraseña
         label="Contraseña"
         value={contraseña}
