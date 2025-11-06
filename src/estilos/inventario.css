@@ -1,0 +1,148 @@
+.inventario-contenedor {
+  background: linear-gradient(to bottom right, #a3d9ff, #f2b6d0);
+  padding: 25px;
+  border-radius: 16px;
+  width: 95%;
+  max-width: 650px;
+  margin: 40px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.inventario-titulo {
+  text-align: center;
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.formulario-equipo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  outline: none;
+  font-size: 1rem;
+}
+
+input:focus, select:focus {
+  border-color: #f2b6d0;
+  box-shadow: 0 0 5px rgba(242, 182, 208, 0.5);
+}
+
+.btn-agregar {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-agregar:hover {
+  background-color: #0056b3;
+}
+
+.tabla-inventario table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2b6d0;
+  color: #000;
+}
+
+.estado {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.estado.disponible { background-color: #d4edda; color: #155724; }
+.estado.en-mantenimiento { background-color: #fff3cd; color: #856404; }
+.estado.dañado { background-color: #f8d7da; color: #721c24; }
+
+.btn-eliminar {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.mensaje-vacio {
+  text-align: center;
+  color: #333;
+  margin-top: 15px;
+}
+
+/* 🧊 Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-eliminar {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.btn-confirmar {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.btn-cancelar {
+  background-color: #ccc;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+/* 📱 Mobile-first responsive */
+@media (min-width: 768px) {
+  .inventario-contenedor {
+    max-width: 750px;
+    padding: 40px;
+  }
+}

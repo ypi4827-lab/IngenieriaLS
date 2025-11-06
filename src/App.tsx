@@ -15,6 +15,7 @@ import Boton from './componentes/comunes/Boton';
 import Reservas from './paginas/Reservas';
 import MisReservas from './paginas/MisReservas';
 import Confirmaciones from './paginas/Confirmaciones';
+import Inventario from './paginas/Inventario';
 
 const App: React.FC = () => {
   return (
@@ -32,6 +33,7 @@ const App: React.FC = () => {
         <Route path="/reservas" element={<Reservas />} />
         <Route path="/misreservas" element={<MisReservas />} />
         <Route path="/confirmacion" element={<Confirmaciones />} />
+        <Route path="/inventario" element={<Inventario />} />
         <Route
           path="*"
           element={
