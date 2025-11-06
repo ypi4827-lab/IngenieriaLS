@@ -18,6 +18,7 @@ import Confirmaciones from './paginas/Confirmaciones';
 import Inventario from './paginas/Inventario';
 import GestionUsuarios from './paginas/GestionUsuarios';
 import Contacto from './paginas/Contacto';
+import DashboardAdmin from './paginas/DashboardAdmin';
 
 const App: React.FC = () => {
   return (
@@ -38,6 +39,7 @@ const App: React.FC = () => {
         <Route path="/inventario" element={<Inventario />} />
         <Route path="/gestionusuarios" element={<GestionUsuarios />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/dashboard" element={<DashboardAdmin />} />
         <Route
           path="*"
           element={
