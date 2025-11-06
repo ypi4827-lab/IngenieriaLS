@@ -17,6 +17,7 @@ import MisReservas from './paginas/MisReservas';
 import Confirmaciones from './paginas/Confirmaciones';
 import Inventario from './paginas/Inventario';
 import GestionUsuarios from './paginas/GestionUsuarios';
+import Contacto from './paginas/Contacto';
 
 const App: React.FC = () => {
   return (
@@ -36,6 +37,7 @@ const App: React.FC = () => {
         <Route path="/confirmacion" element={<Confirmaciones />} />
         <Route path="/inventario" element={<Inventario />} />
         <Route path="/gestionusuarios" element={<GestionUsuarios />} />
+        <Route path="/contacto" element={<Contacto />} />
         <Route
           path="*"
           element={
