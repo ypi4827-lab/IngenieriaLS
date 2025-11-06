@@ -1,17 +1,17 @@
 .formulario-cambiar-contraseña {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding-bottom: 30px;
-  width: 250px;
+  width: 98vw;
   padding-left: 30px;
   padding-right: 30px;
+  margin-top: 20px;
   gap: 10px;
 }
 
 label {
-  align-self: flex-start;
   color: #000;
   font-weight: 500;
   margin-bottom: 4px;
@@ -32,5 +32,4 @@ button {
   padding: 10px 20px;
   cursor: pointer;
   font-weight: bold;
-  width: 100%;
 }

@@ -5,6 +5,7 @@ import logo from '../assets/logo.png';
 import Boton from './comunes/Boton';
 
 const Header: React.FC = () => {
+  const user = localStorage.getItem('usuario');
   const navigate = useNavigate();
 
   return (
@@ -18,7 +19,7 @@ const Header: React.FC = () => {
       <h2>
         BIENVENIDOS <br className="header-spacing" /> A INGENIERIA LS
       </h2>
-      <Boton texto="Ingresar" enlace="/registro"></Boton>
+      {!user && <Boton texto="Ingresar" enlace="/registro"></Boton>}
     </header>
   );
 };
