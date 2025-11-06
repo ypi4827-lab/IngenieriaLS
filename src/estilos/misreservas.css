@@ -1,0 +1,57 @@
+.misreservas-contenedor {
+  background: linear-gradient(to bottom right, #a3d9ff, #f2b6d0);
+  padding: 20px;
+  border-radius: 16px;
+  width: 95%;
+  max-width: 450px;
+  margin: 30px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.misreservas-titulo {
+  text-align: center;
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.lista-reservas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-reserva {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-reserva h4 {
+  color: #c00;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.estado-reserva {
+  font-weight: bold;
+}
+
+.mensaje-vacio {
+  text-align: center;
+  color: #333;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+/* 📱 Mobile-first, responsive */
+@media (min-width: 768px) {
+  .misreservas-contenedor {
+    max-width: 600px;
+  }
+}

@@ -12,6 +12,8 @@ import Footer from './componentes/Footer';
 import Cambiarcontraseña from './paginas/Cambiarcontraseña';
 import Perfil from './paginas/Perfil';
 import Boton from './componentes/comunes/Boton';
+import Reservas from './paginas/Reservas';
+import MisReservas from './paginas/MisReservas';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +28,8 @@ const App: React.FC = () => {
         <Route path="/recuperacion" element={<Recuperacion />} />
         <Route path="/cambiarcontraseña" element={<Cambiarcontraseña />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/reservas" element={<Reservas />} />
+        <Route path="/misreservas" element={<MisReservas />} />
         <Route
           path="*"
           element={
