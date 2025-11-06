@@ -14,6 +14,7 @@ import Perfil from './paginas/Perfil';
 import Boton from './componentes/comunes/Boton';
 import Reservas from './paginas/Reservas';
 import MisReservas from './paginas/MisReservas';
+import Confirmaciones from './paginas/Confirmaciones';
 
 const App: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/reservas" element={<Reservas />} />
         <Route path="/misreservas" element={<MisReservas />} />
+        <Route path="/confirmacion" element={<Confirmaciones />} />
         <Route
           path="*"
           element={
