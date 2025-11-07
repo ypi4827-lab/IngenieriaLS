@@ -1,0 +1,48 @@
+.productos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+
+.producto {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+.producto img {
+  width: 100px;
+  height: auto;
+  margin-top: 8px;
+}
+
+.producto p {
+  font-size: 1rem;
+  color: #000;
+  margin: 5px;
+}
+.productos h2 {
+    color: #002b7f;
+    font-weight: 800;
+  }
+@media (min-width: 1000px) {
+  .productos {
+    width: 98%;
+  }
+  .producto {
+    width: 100%;
+  }
+  .producto {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .producto p {
+    font-size: 1.7rem;
+  }
+  .producto img {
+    width: 200px;
+    height: 200px;
+  }
+}

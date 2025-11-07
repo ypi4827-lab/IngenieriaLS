@@ -1,0 +1,76 @@
+.enlace-boton {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.botones button {
+  background-color: #a5d8ff;
+  color: green;
+}
+.botones button:hover {
+  background-color: #74c0fc;
+}
+
+.botones-servicios {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.botones-servicios .btn-atras {
+  width: 100%;
+  border-radius: 40px;
+}
+
+.btn-general {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 160px;
+  margin-top: 15px;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-general:hover {
+  background-color: var(--color-boton-hover);
+  transform: scale(1.05);
+}
+
+/* Botón verde para "Atrás" */
+.btn-atras {
+  background-color: var(--color-boton-atras);
+  color: white;
+}
+
+.btn-atras:hover {
+  background-color: var(--color-boton-atras-hover);
+}
+
+.btn-recuperacion {
+  background-color: var(--color-boton-gris);
+  color: #d12e2e;
+}
+
+.btn-recuperacion:hover {
+  background-color: var(--color-boton-gris-hover);
+  color: white;
+}
+
+.btn-iniciar {
+  background-color: #0014ff;
+}
