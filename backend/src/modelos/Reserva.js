@@ -7,7 +7,7 @@ const reservaSchema = new mongoose.Schema({
   fechaSolicitud: { type: Date, default: Date.now },
   fechaProgramada: { type: Date },
   horaProgramada: { type: String },
-  estado: { type: String, default: "Pendiente" },
+  estado: { type: String, enum: ["Pendiente", "Confirmada", "Finalizada", "Cancelada"], default: "Pendiente" },
   notasCliente: { type: String },
   informeTecnico: { type: String },
 });

@@ -2,25 +2,25 @@ import React from "react";
 import "../../estilos/reservas.css";
 
 interface Props {
-  fecha: string;
-  setFecha: (value: string) => void;
+  fechaProgramada: string;
+  setFechaProgramada: (value: string) => void;
   hora: string;
   setHora: (value: string) => void;
 }
 
 const CalendarioDisponibilidad: React.FC<Props> = ({
-  fecha,
-  setFecha,
+  fechaProgramada,
+  setFechaProgramada,
   hora,
   setHora,
 }) => {
   return (
     <div className="calendario-disponibilidad">
-      <label>Selecciona la fecha</label>
+      <label>Selecciona la fechaProgramada</label>
       <input
         type="date"
-        value={fecha}
-        onChange={(e) => setFecha(e.target.value)}
+        value={fechaProgramada}
+        onChange={(e) => setFechaProgramada(e.target.value)}
       />
 
       <label>Selecciona la hora</label>

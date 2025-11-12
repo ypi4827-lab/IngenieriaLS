@@ -2,7 +2,7 @@ const Reserva = require("../modelos/Reserva");
 
 exports.obtenerReservas = async (req, res) => {
   try {
-    const reservas = await Reserva.find();
+    const reservas = await Reserva.find().populate("clienteId servicioId tecnicoAsignado");
     res.json(reservas);
   } catch (error) {
     res

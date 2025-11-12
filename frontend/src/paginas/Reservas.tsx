@@ -7,16 +7,16 @@ import { useNavigate } from 'react-router-dom';
 
 const Reservas: React.FC = () => {
   const [servicio, setServicio] = useState('');
-  const [fecha, setFecha] = useState('');
+  const [fechaProgramada, setFechaProgramada] = useState('');
   const [hora, setHora] = useState('');
   const [tecnico, setTecnico] = useState('');
   const [confirmado, setConfirmado] = useState(false);
   const navigate = useNavigate();
 
   const handleConfirmar = () => {
-    if (servicio && fecha && hora && tecnico) {
+    if (servicio && fechaProgramada && hora && tecnico) {
       setConfirmado(true);
-      const reserva = { servicio, fecha, hora, tecnico, estado: "Confirmada" };
+      const reserva = { servicio, fechaProgramada, hora, tecnico, estado: "Confirmada" };
       localStorage.setItem("ultimaReserva", JSON.stringify(reserva));
       navigate('/confirmacion');
     } else {
@@ -37,8 +37,8 @@ const Reservas: React.FC = () => {
             setTecnico={setTecnico}
           />
           <CalendarioDisponibilidad
-            fecha={fecha}
-            setFecha={setFecha}
+            fechaProgramada={fechaProgramada}
+            setFechaProgramada={setFechaProgramada}
             hora={hora}
             setHora={setHora}
           />
@@ -49,7 +49,7 @@ const Reservas: React.FC = () => {
       ) : (
         <ResumenReserva
           servicio={servicio}
-          fecha={fecha}
+          fechaProgramada={fechaProgramada}
           hora={hora}
           tecnico={tecnico}
         />
