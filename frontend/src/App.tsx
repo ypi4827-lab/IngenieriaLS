@@ -60,7 +60,7 @@ const App: React.FC = () => {
         <Route
           path="/misreservas"
           element={
-            <RutaProtegida rolPermitido='cliente'>
+            <RutaProtegida>
               <MisReservas />
             </RutaProtegida>
           }

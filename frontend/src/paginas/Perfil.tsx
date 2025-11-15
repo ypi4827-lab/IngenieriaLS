@@ -46,7 +46,7 @@ const Perfil: React.FC = () => {
         />
         <label>Telefono:</label>
         <input
-          type="email"
+          type="tel"
           value={telefono}
           onChange={(e) => setTelefono(e.target.value)}
         />

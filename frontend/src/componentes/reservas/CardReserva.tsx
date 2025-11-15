@@ -1,48 +1,66 @@
-import React from "react";
-import "../../estilos/misreservas.css";
-import Boton from "../comunes/Boton";
-
-interface Reserva {
-  id: number;
-  servicio: string;
-  tecnico: string;
-  fecha: string;
-  hora: string;
-  estado: "pendiente" | "confirmada" | "completada" | "cancelada";
-}
+import React from 'react';
+import '../../estilos/misreservas.css';
+import type { Reserva } from '../../servicios/reservas';
+import BotonesTecnico from './BotonesTecnico';
 
 interface Props {
   reserva: Reserva;
-  onCancelar: () => void;
 }
 
-const CardReserva: React.FC<Props> = ({ reserva, onCancelar }) => {
-  const { servicio, tecnico, fecha, hora, estado } = reserva;
+const CardReserva: React.FC<Props> = ({ reserva }) => {
+  const { servicio, tecnicoAsignado, fechaProgramada, horaProgramada, estado } =
+    reserva;
+
+  const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+
+  const actualizarUI = () => window.location.reload();
+
+  const nombreTecnico =
+    typeof tecnicoAsignado === 'string'
+      ? tecnicoAsignado
+      : tecnicoAsignado?.nombre || '—';
+
+  const fechaFormateada = new Date(fechaProgramada).toLocaleDateString(
+    'es-CO',
+    {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+  );
 
   const colorEstado = {
-    pendiente: "#f1c40f",
-    confirmada: "#2ecc71",
-    completada: "#3498db",
-    cancelada: "#e74c3c",
+    Pendiente: '#f1c40f',
+    Confirmada: '#2ecc71',
+    Finalizada: '#3498db',
+    Cancelada: '#e74c3c',
   }[estado];
 
   return (
     <div className="card-reserva">
-      <h4 className="reserva-servicio">{servicio}</h4>
-      <p><strong>Técnico:</strong> {tecnico}</p>
-      <p><strong>Fecha:</strong> {fecha}</p>
-      <p><strong>Hora:</strong> {hora}</p>
+      <h4 className="reserva-servicio">{servicio.toUpperCase()}</h4>
       <p>
-        <strong>Estado:</strong>{" "}
+        <strong>Técnico:</strong> {nombreTecnico}
+      </p>
+      <p>
+        <strong>Fecha:</strong> {fechaFormateada}
+      </p>
+      <p>
+        <strong>hora:</strong> {horaProgramada}
+      </p>
+
+      <p>
+        <strong>Estado:</strong>
         <span className="estado-reserva" style={{ color: colorEstado }}>
           {estado.toUpperCase()}
         </span>
       </p>
-      {estado !== "cancelada" && estado !== "completada" && (
-        <Boton
-          texto="Cancelar"
-          onClick={onCancelar}
-          classProp="btn-rojo"
+
+      {usuario.rol === 'tecnico' && (
+        <BotonesTecnico
+          reservaId={reserva._id!}
+          onActualizada={actualizarUI}
+          estadoActual={reserva.estado}
         />
       )}
     </div>

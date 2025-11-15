@@ -74,3 +74,31 @@
 .btn-iniciar {
   background-color: #0014ff;
 }
+
+.btn-confirmada {
+  background: #3498db;
+  color: white;
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.btn-finalizada {
+  background: #2ecc71;
+  color: white;
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.btn-pendiente {
+  background: #f1c40f;
+  color: white;
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.btn-cancelada {
+  background: #e74c3c;
+  color: white;
+  margin-top: 0;
+  margin-left: 10px;
+}

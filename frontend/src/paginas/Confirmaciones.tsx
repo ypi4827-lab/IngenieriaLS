@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const Confirmaciones: React.FC = () => {
   const navigate = useNavigate();
 
-  // ⚙️ Simulamos la reserva confirmada (luego puedes pasarla desde el estado o backend)
   const reservaGuardada = localStorage.getItem('ultimaReserva');
   const reserva = reservaGuardada
     ? JSON.parse(reservaGuardada)
@@ -22,7 +21,7 @@ const Confirmaciones: React.FC = () => {
         </button>
         <button
           className="btn-misreservas"
-          onClick={() => navigate('/mis-reservas')}
+          onClick={() => navigate('/misreservas')}
         >
           Ver mis reservas
         </button>

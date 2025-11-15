@@ -16,7 +16,7 @@ const CalendarioDisponibilidad: React.FC<Props> = ({
 }) => {
   return (
     <div className="calendario-disponibilidad">
-      <label>Selecciona la fechaProgramada</label>
+      <label>Selecciona la fecha</label>
       <input
         type="date"
         value={fechaProgramada}

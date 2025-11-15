@@ -39,7 +39,7 @@ const Header: React.FC = () => {
       case 'tecnico':
         return (
           <nav>
-            <Link to="/misreservas">Mis Servicios</Link>
+            <Link to="/misreservas">Mis Reservas</Link>
             <Link to="/perfil">Perfil</Link>
             <button onClick={cerrarSesion}>Salir</button>
           </nav>

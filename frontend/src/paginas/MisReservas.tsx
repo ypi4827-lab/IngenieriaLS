@@ -1,33 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../estilos/misreservas.css';
 import ListaReservas from '../componentes/reservas/ListaReservas';
-
-interface Reserva {
-  id: number;
-  servicio: string;
-  tecnico: string;
-  fecha: string;
-  hora: string;
-  estado: 'pendiente' | 'confirmada' | 'completada' | 'cancelada';
-}
+import {
+  obtenerReservasCliente,
+  obtenerReservasTecnico,
+  obtenerReservas,
+  type Reserva,
+} from '../servicios/reservas';
 
 const MisReservas: React.FC = () => {
-  const reservaGuardada = localStorage.getItem('ultimaReserva');
-  const reservaInicial = reservaGuardada ? [JSON.parse(reservaGuardada)] : [];
-  const [reservas, setReservas] = useState<Reserva[]>([...reservaInicial]);
+  const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
 
-  const cancelarReserva = (id: number) => {
-    const actualizar = reservas.map((r) =>
-      r.id === id ? { ...r, estado: 'cancelada' } : r
-    );
-    setReservas(actualizar);
-  };
+  const [reservas, setReservas] = useState<Reserva[]>([]);
+  const [cargando, setCargando] = useState(true);
+
+  useEffect(() => {
+    const cargarReservas = async () => {
+      try {
+        let data: Reserva[] = [];
+
+        console.log(usuario.nombre);
+
+        if (usuario.rol === 'cliente') {
+          data = await obtenerReservasCliente(usuario.id);
+        } else if (usuario.rol === 'tecnico') {
+          data = await obtenerReservasTecnico(usuario.id);
+        } else if (usuario.rol === 'administrador') {
+          data = await obtenerReservas();
+        }
+        setReservas(data);
+      } catch (error) {
+        console.log('Error al cargar reservas:', error);
+      } finally {
+        setCargando(false);
+      }
+    };
+    cargarReservas();
+  }, [usuario]);
+
+  if (cargando) {
+    return <p className="mensaje-cargando">Cargando reservas...</p>;
+  }
 
   return (
     <div className="misreservas-contenedor">
       <h2 className="misreservas-titulo">Mis Reservas</h2>
       {reservas.length > 0 ? (
-        <ListaReservas reservas={reservas} onCancelar={cancelarReserva} />
+        <ListaReservas reservas={reservas} />
       ) : (
         <p className="mensaje-vacio">No tienes reservas registradas.</p>
       )}

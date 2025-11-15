@@ -1,25 +1,36 @@
-const Reserva = require("../modelos/Reserva");
+const Reserva = require("../modelos/Reserva")
 
 exports.obtenerReservas = async (req, res) => {
   try {
-    const reservas = await Reserva.find().populate("clienteId servicioId tecnicoAsignado");
-    res.json(reservas);
+    const filtro = {}
+    if (req.query.clienteId) {
+      filtro.clienteId = req.query.clienteId
+    }
+
+    if (req.query.tecnicoAsignado) {
+      filtro.tecnicoAsignado = req.query.tecnicoAsignado
+    }
+
+    const reservas = await Reserva.find(filtro)
+      .populate("clienteId", "nombre correo")
+      .populate("tecnicoAsignado", "nombre correo")
+    res.json(reservas)
   } catch (error) {
     res
       .status(500)
-      .json({ mensaje: "Error del servidor", error: error.message });
+      .json({ mensaje: "Error del servidor", error: error.message })
   }
-};
+}
 
 exports.crearReserva = async (req, res) => {
   try {
-    const nueva = new Reserva(req.body);
-    await nueva.save();
-    res.status(201).json(nueva);
+    const nueva = new Reserva(req.body)
+    await nueva.save()
+    res.status(201).json(nueva)
   } catch (error) {
-    res.status(400).json({ mensaje: "Error al crear la reserva", error });
+    res.status(400).json({ mensaje: "Error al crear la reserva", error })
   }
-};
+}
 
 exports.actualizarReserva = async (req, res) => {
   try {
@@ -27,18 +38,18 @@ exports.actualizarReserva = async (req, res) => {
       req.params.id,
       req.body,
       { new: true }
-    );
-    res.json(actualizado);
+    )
+    res.json(actualizado)
   } catch (error) {
-    res.status(404).json({ mensaje: "Reserva no encontrada" });
+    res.status(404).json({ mensaje: "Reserva no encontrada" })
   }
-};
+}
 
 exports.eliminarReserva = async (req, res) => {
   try {
-    await Reserva.findByIdAndDelete(req.params.id);
-    res.json({ mensaje: "Reserva eliminada correctamente" });
+    await Reserva.findByIdAndDelete(req.params.id)
+    res.json({ mensaje: "Reserva eliminada correctamente" })
   } catch (error) {
-    res.status(404).json({ mensaje: "Reserva no encontrada" });
+    res.status(404).json({ mensaje: "Reserva no encontrada" })
   }
-};
+}
