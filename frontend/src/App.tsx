@@ -33,7 +33,14 @@ const App: React.FC = () => {
         <Route path="/registro" element={<Registro />} />
         <Route path="/ingreso" element={<IniciarSesion />} />
         <Route path="/recuperacion" element={<Recuperacion />} />
-        <Route path="/cambiarcontraseña" element={<Cambiarcontraseña />} />
+        <Route
+          path="/cambiarcontraseña"
+          element={
+            <RutaProtegida>
+              <Cambiarcontraseña />
+            </RutaProtegida>
+          }
+        />
         <Route
           path="/perfil"
           element={
@@ -45,7 +52,7 @@ const App: React.FC = () => {
         <Route
           path="/reservas"
           element={
-            <RutaProtegida>
+            <RutaProtegida rolPermitido='cliente'>
               <Reservas />
             </RutaProtegida>
           }
@@ -53,7 +60,7 @@ const App: React.FC = () => {
         <Route
           path="/misreservas"
           element={
-            <RutaProtegida>
+            <RutaProtegida rolPermitido='cliente'>
               <MisReservas />
             </RutaProtegida>
           }
@@ -61,7 +68,7 @@ const App: React.FC = () => {
         <Route
           path="/confirmacion"
           element={
-            <RutaProtegida>
+            <RutaProtegida rolPermitido='cliente'>
               <Confirmaciones />
             </RutaProtegida>
           }
@@ -69,7 +76,7 @@ const App: React.FC = () => {
         <Route
           path="/inventario"
           element={
-            <RutaProtegida>
+            <RutaProtegida rolPermitido='asesor'>
               <Inventario />
             </RutaProtegida>
           }
@@ -77,7 +84,7 @@ const App: React.FC = () => {
         <Route
           path="/gestionusuarios"
           element={
-            <RutaProtegida>
+            <RutaProtegida rolPermitido='administrador'>
               <GestionUsuarios />
             </RutaProtegida>
           }
@@ -85,7 +92,7 @@ const App: React.FC = () => {
         <Route
           path="/dashboard"
           element={
-            <RutaProtegida>
+            <RutaProtegida rolPermitido='administrador'>
               <DashboardAdmin />
             </RutaProtegida>
           }

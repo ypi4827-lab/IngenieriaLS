@@ -12,7 +12,7 @@ const RutaProtegida = ({
   const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
 
   if (!token) return <Navigate to="/ingreso" />;
-  if (usuario.rol === 'admin') return children;
+  if (usuario.rol === 'administrador') return children;
   if (rolPermitido && usuario.rol !== rolPermitido) return <Navigate to="/ingreso" />;
 
   return children;

@@ -7,6 +7,47 @@ const ListaServicios: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
+
+  const renderCTA = () => {
+    if (!usuario) {
+      return (
+        <>
+          <p className="pregunta">¿Quieres solicitar un servicio técnico?</p>
+          <div className="cta-servicios">
+            <Boton
+              texto="Crear cuenta"
+              enlace="/registro"
+              classProp="btn-principal"
+            />
+            <Boton
+              texto="Iniciar sesión"
+              enlace="/ingreso"
+              classProp="btn-secundario"
+            />
+          </div>
+        </>
+      );
+    }
+
+    if (usuario.rol === 'cliente') {
+      return (
+        <>
+          <p className="pregunta">
+            ¿Listo para agendar tu mantenimiento o reparación?
+          </p>
+          <Boton
+            texto="Reservar servicio"
+            enlace="/reservas"
+            classProp="btn-principal"
+          />
+        </>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <section className="lista-servicios">
       <div className="servicio">
@@ -14,7 +55,8 @@ const ListaServicios: React.FC = () => {
           <span className="icono">⚒️</span>{' '}
           <strong>Mantenimiento técnico especializado</strong>
           <br />
-          Revisamos y reparamos tus equipos con precisión y rapidez.
+          Diagnóstico y mantenimiento preventivo y correctivo para asegurar el
+          funcionamiento óptimo de tus equipos
         </p>
       </div>
 
@@ -23,7 +65,8 @@ const ListaServicios: React.FC = () => {
           <span className="icono">📦</span>{' '}
           <strong>Instalación profesional</strong>
           <br />
-          Montaje en sitio de balanzas, básculas y sierras, con garantía.
+          Instalación certificada de balanzas, básculas y sierras, garantizando
+          calibración correcta y funcionamiento seguro.
         </p>
       </div>
 
@@ -32,13 +75,13 @@ const ListaServicios: React.FC = () => {
           <span className="icono">📋</span>{' '}
           <strong>Asesoría personalizada</strong>
           <br />
-          Te ayudamos a elegir el equipo ideal para tus necesidades.
+          Acompañamiento experto para seleccionar el equipo adecuado según tu
+          industria y volumen de trabajo.
         </p>
       </div>
 
-      <p className="pregunta">
-        ¿Quieres conocer tarifas, disponibilidad o agendar una visita?
-      </p>
+      {renderCTA()}
+
       {location.pathname === '/servicios' && (
         <Boton texto="Atrás" onClick={() => navigate(-1)} />
       )}
