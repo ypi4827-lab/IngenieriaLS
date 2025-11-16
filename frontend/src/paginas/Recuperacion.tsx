@@ -1,15 +1,18 @@
-import React, { useState } from "react";
-import FormularioBase from "../componentes/comunes/FormularioBase";
-import CampoTexto from "../componentes/comunes/CampoTexto";
-import Boton from "../componentes/comunes/Boton";
+import React, { useState } from 'react';
+import FormularioBase from '../componentes/comunes/FormularioBase';
+import CampoTexto from '../componentes/comunes/CampoTexto';
+import Boton from '../componentes/comunes/Boton';
+import { solicitarRecuperacion } from '../servicios/autenticacion';
 
 const Recuperacion: React.FC = () => {
-  const [correo, setCorreo] = useState("");
+  const [correo, setCorreo] = useState('');
 
-  const enviar = () => {
-    if (correo.trim() === "") return alert("Ingresa un correo válido");
+  const enviar = async () => {
+    if (correo.trim() === '') return alert('Ingresa un correo válido');
+    const res = await solicitarRecuperacion(correo);
     alert(`Se ha enviado un enlace de recuperación a ${correo}`);
-    setCorreo("");
+    console.log('Link de recuperación:', res.enlace);
+    setCorreo('');
   };
 
   return (

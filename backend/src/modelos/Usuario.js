@@ -5,7 +5,7 @@ const usuarioSchema = new mongoose.Schema(
   {
     nombre: { type: String, required: true },
     correo: { type: String, required: true, unique: true },
-    contraseña: { type: String, required: true },
+    contraseña: { type: String, required: true, select: false },
     telefono: { type: String },
     rol: {
       type: String,
@@ -13,6 +13,8 @@ const usuarioSchema = new mongoose.Schema(
       default: "cliente",
     },
     activo: { type: Boolean, default: true },
+    restablecerToken: { type: String },
+    expiraToken: { type: Date },
   },
   { timestamps: true }
 )

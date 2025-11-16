@@ -1,5 +1,6 @@
 const Usuario = require("../modelos/Usuario")
 const jwt = require("jsonwebtoken")
+const crypto = require("crypto")
 
 exports.registrar = async (req, res) => {
   try {
@@ -29,7 +30,7 @@ exports.registrar = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { correo, contraseña } = req.body
-    const usuario = await Usuario.findOne({ correo })
+    const usuario = await Usuario.findOne({ correo }).select("+contraseña")
 
     if (!usuario) {
       return res.status(400).json({ msg: "Usuario no encontrado" })
@@ -60,5 +61,76 @@ exports.login = async (req, res) => {
   } catch (error) {
     console.error("Error en login:", error)
     res.status(500).json({ msg: "Error en el servidor" })
+  }
+}
+
+exports.cambiarContraseña = async (req, res) => {
+  try {
+    const id = req.usuario.id
+    const { nuevaContraseña } = req.body
+
+    if (!nuevaContraseña) {
+      return res.status(400).json({ msg: "La contraseña es requerida" })
+    }
+
+    const usuario = await Usuario.findById(id).select("+contraseña")
+
+    usuario.contraseña = nuevaContraseña
+    await usuario.save()
+
+    res.json({ msg: "Contraseña cambiada correctamente" })
+  } catch (error) {
+    res.status(500).json({ msg: "Error al cambiar la contraseña" })
+  }
+}
+
+exports.solicitarRecuperacion = async (req, res) => {
+  try {
+    const { correo } = req.body
+    const usuario = await Usuario.findOne({ correo })
+
+    if (!usuario)
+      return res
+        .status(400)
+        .json({ msg: "No existe un usuario con este correo" })
+
+    const token = crypto.randomBytes(32).toString("hex")
+
+    usuario.restablecerToken = token
+    usuario.expiraToken = Date.now() + 3600000 // 1 hora
+    await usuario.save()
+
+    const enlace = `${process.env.FRONTEND_URL}/recuperar/${token}`
+
+    res.json({ msg: "Correo enviado", enlace })
+  } catch (error) {
+    console.log(error)
+
+    res.status(500).json({ msg: "Error en servidor" })
+  }
+}
+
+exports.restablecerContraseña = async (req, res) => {
+  try {
+    const { token } = req.params
+    const { nuevaContraseña } = req.body
+
+    const usuario = await Usuario.findOne({
+      restablecerToken: token,
+      expiraToken: { $gt: Date.now() },
+    }).select("+contraseña")
+
+    if (!usuario)
+      return res.status(400).json({ msg: "Token inválido o expirado" })
+
+    usuario.contraseña = nuevaContraseña
+    usuario.restablecerToken = undefined
+    usuario.expiraToken = undefined
+
+    await usuario.save()
+
+    res.json({ msg: "Contraseña actualizada correctamente" })
+  } catch (error) {
+    res.status(500).json({ msg: "Error en servidor" })
   }
 }

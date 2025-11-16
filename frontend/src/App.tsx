@@ -20,6 +20,7 @@ import GestionUsuarios from './paginas/GestionUsuarios';
 import Contacto from './paginas/Contacto';
 import DashboardAdmin from './paginas/DashboardAdmin';
 import RutaProtegida from './paginas/RutaProtegida';
+import RestablecerContraseña from './paginas/RestablecerContraseña';
 
 const App: React.FC = () => {
   return (
@@ -90,6 +91,7 @@ const App: React.FC = () => {
           }
         />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/recuperar/:token" element={<RestablecerContraseña />} />
         <Route
           path="*"
           element={

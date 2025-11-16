@@ -1,31 +1,40 @@
-import React, { useState } from "react";
-import "../estilos/gestionusuarios.css";
-import TablaUsuarios from "../componentes/gestionUsuarios/TablaUsuarios";
+import React, { useEffect, useState } from 'react';
+import '../estilos/gestionusuarios.css';
+import TablaUsuarios from '../componentes/gestionUsuarios/TablaUsuarios';
+import { actualizarUsuario, obtenerUsuarios } from '../servicios/usuarios';
 
 interface Usuario {
-  id: number;
+  _id: string;
   nombre: string;
   correo: string;
-  rol: "cliente" | "técnico" | "asesor" | "administrador";
+  rol: 'cliente' | 'tecnico' | 'asesor' | 'administrador';
   activo: boolean;
 }
 
 const GestionUsuarios: React.FC = () => {
-  const [usuarios, setUsuarios] = useState<Usuario[]>([
-    { id: 1, nombre: "Carlos Ruiz", correo: "carlos@correo.com", rol: "cliente", activo: true },
-    { id: 2, nombre: "María Gómez", correo: "maria@correo.com", rol: "técnico", activo: true },
-    { id: 3, nombre: "Edgar López", correo: "edgar@correo.com", rol: "asesor", activo: false },
-  ]);
+  const [usuarios, setUsuarios] = useState<Usuario[]>([]);
 
-  const cambiarRol = (id: number, nuevoRol: Usuario["rol"]) => {
+  useEffect(() => {
+    obtenerUsuarios().then((data) => setUsuarios(data));
+  }, []);
+
+  const cambiarRol = async (id: string, nuevoRol: Usuario['rol']) => {
+    await actualizarUsuario(id, { rol: nuevoRol });
     setUsuarios((prev) =>
-      prev.map((u) => (u.id === id ? { ...u, rol: nuevoRol } : u))
+      prev.map((u) => (u._id === id ? { ...u, rol: nuevoRol } : u))
     );
   };
 
-  const cambiarEstado = (id: number) => {
+  const cambiarEstado = async (id: string) => {
+    const usuarioActual = usuarios.find((u) => u._id === id);
+    if (!usuarioActual) return;
+
+    const nuevoEstado = !usuarioActual.activo;
+
+    await actualizarUsuario(id, { activo: nuevoEstado });
+
     setUsuarios((prev) =>
-      prev.map((u) => (u.id === id ? { ...u, activo: !u.activo } : u))
+      prev.map((u) => (u._id === id ? { ...u, activo: nuevoEstado } : u))
     );
   };
 
