@@ -1,10 +1,11 @@
 import API from "./api";
+import type { Usuario } from "./usuarios";
 
 export interface Reserva {
   _id?: string;
-  clienteId: string;
+  clienteId: string | Usuario;
   servicio: string;
-  tecnicoAsignado?: string;
+  tecnicoAsignado?: string | Usuario;
   fechaProgramada: string;
   horaProgramada: string;
   estado?: string;

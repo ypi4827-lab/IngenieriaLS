@@ -22,6 +22,7 @@ const Perfil: React.FC = () => {
       );
       alert('Cambios guardados exitosamente 💾');
     } catch (error) {
+      console.log(error);
       alert('❌ Error al guardar cambios');
     }
   };

@@ -22,6 +22,7 @@ const BotonesTecnico: React.FC<Props> = ({
       await actualizarReserva(reservaId, { estado });
       onActualizada();
     } catch (error) {
+      console.log(error);
       alert('Error al actualizar la reserva');
     }
   };

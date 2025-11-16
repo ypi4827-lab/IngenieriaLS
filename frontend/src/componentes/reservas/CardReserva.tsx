@@ -17,7 +17,7 @@ const CardReserva: React.FC<Props> = ({ reserva }) => {
 
   const nombreTecnico =
     typeof tecnicoAsignado === 'string'
-      ? tecnicoAsignado
+      ? "Sin nombre"
       : tecnicoAsignado?.nombre || '—';
 
   const fechaFormateada = new Date(fechaProgramada).toLocaleDateString(
@@ -34,7 +34,7 @@ const CardReserva: React.FC<Props> = ({ reserva }) => {
     Confirmada: '#2ecc71',
     Finalizada: '#3498db',
     Cancelada: '#e74c3c',
-  }[estado];
+  }[estado ?? "Pendiente"];
 
   return (
     <div className="card-reserva">
@@ -52,7 +52,7 @@ const CardReserva: React.FC<Props> = ({ reserva }) => {
       <p>
         <strong>Estado:</strong>
         <span className="estado-reserva" style={{ color: colorEstado }}>
-          {estado.toUpperCase()}
+          {estado?.toUpperCase()}
         </span>
       </p>
 
@@ -60,7 +60,7 @@ const CardReserva: React.FC<Props> = ({ reserva }) => {
         <BotonesTecnico
           reservaId={reserva._id!}
           onActualizada={actualizarUI}
-          estadoActual={reserva.estado}
+          estadoActual={reserva.estado || "Pendiente"}
         />
       )}
     </div>

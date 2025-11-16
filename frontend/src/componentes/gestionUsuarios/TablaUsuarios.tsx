@@ -52,7 +52,7 @@ const TablaUsuarios: React.FC<Props> = ({ usuarios, onCambiarRol, onCambiarEstad
         <ModalEditarRol
           usuario={usuarioSeleccionado}
           onConfirmar={(nuevoRol) => {
-            onCambiarRol(usuarioSeleccionado._id, nuevoRol);
+            onCambiarRol(usuarioSeleccionado._id || "", nuevoRol);
             setUsuarioSeleccionado(null);
           }}
           onCancelar={() => setUsuarioSeleccionado(null)}
@@ -63,7 +63,7 @@ const TablaUsuarios: React.FC<Props> = ({ usuarios, onCambiarRol, onCambiarEstad
         <ModalConfirmarDesactivar
           usuario={usuarioDesactivar}
           onConfirmar={() => {
-            onCambiarEstado(usuarioDesactivar._id);
+            onCambiarEstado(usuarioDesactivar._id || "");
             setUsuarioDesactivar(null);
           }}
           onCancelar={() => setUsuarioDesactivar(null)}

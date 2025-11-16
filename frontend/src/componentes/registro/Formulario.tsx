@@ -37,12 +37,9 @@ const Formulario: React.FC = () => {
       setContraseña('');
       setConfirmarContraseña('');
       navigate('/ingreso');
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error al registrar:', error);
-      alert(
-        '❌ Error al registrar usuario: ' +
-          (error.response?.data?.mensaje || 'Inténtalo nuevamente')
-      );
+      alert('Error al registrar usuario: ');
     }
   };
   return (

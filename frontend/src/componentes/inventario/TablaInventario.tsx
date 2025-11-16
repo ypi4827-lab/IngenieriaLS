@@ -58,7 +58,7 @@ const TablaInventario: React.FC<Props> = ({
                   </button>
                   <button
                     className="btn-eliminar"
-                    onClick={() => setIdSeleccionado(eq._id)}
+                    onClick={() => setIdSeleccionado(eq._id ?? null)}
                     title="Eliminar"
                   >
                     🗑️
