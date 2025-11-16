@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../../estilos/ListaProductos.css';
+import '../../estilos/listaproductos.css';
 import Boton from '../comunes/Boton';
 import bascula1 from '../../assets/bascula 1.png';
 import bascula2 from '../../assets/bascula 2.png';
