@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../../estilos/ListaServicios.css';
+import '../../estilos/listaservicios.css';
 import Boton from '../comunes/Boton';
 
 const ListaServicios: React.FC = () => {
