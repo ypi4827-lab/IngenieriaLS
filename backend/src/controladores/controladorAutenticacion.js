@@ -81,7 +81,7 @@ exports.cambiarContraseña = async (req, res) => {
 
     res.json({ msg: "Contraseña cambiada correctamente" });
   } catch (error) {
-    res.status(500).json({ msg: "Error al cambiar la contraseña" });
+    res.status(500).json({ msg: "Error al cambiar la contraseña", error: error.message });
   }
 };
 
