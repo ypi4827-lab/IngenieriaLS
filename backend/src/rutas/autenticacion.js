@@ -4,7 +4,7 @@ const controladorAutenticacion = require("../controladores/controladorAutenticac
 
 router.post("/registro", controladorAutenticacion.registrar)
 router.post("/login", controladorAutenticacion.login)
-router.put("/cambiar-contraseña", controladorAutenticacion.cambiarContraseña)
+router.put("/cambiar-contrasena", controladorAutenticacion.cambiarContraseña)
 router.post("/recuperar", controladorAutenticacion.solicitarRecuperacion);
 router.put("/restablecer/:token", controladorAutenticacion.restablecerContraseña);
 

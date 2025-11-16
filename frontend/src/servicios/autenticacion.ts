@@ -34,7 +34,7 @@ export const actualizarPerfil = async (id: string, datos: Partial<Usuario>) => {
 
 export const cambiarContraseña = async (nuevaContraseña: string) => {
   const { data } = await API.put(
-    '/autenticacion/cambiar-contraseña',
+    '/autenticacion/cambiar-contrasena',
     { nuevaContraseña },
     {
       headers: {
