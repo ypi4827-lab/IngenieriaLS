@@ -3,16 +3,23 @@ import FormularioBase from '../componentes/comunes/FormularioBase';
 import CampoTexto from '../componentes/comunes/CampoTexto';
 import Boton from '../componentes/comunes/Boton';
 import { solicitarRecuperacion } from '../servicios/autenticacion';
+import { useNavigate } from 'react-router-dom';
 
 const Recuperacion: React.FC = () => {
+  const navigate = useNavigate();
   const [correo, setCorreo] = useState('');
 
   const enviar = async () => {
     if (correo.trim() === '') return alert('Ingresa un correo válido');
-    const res = await solicitarRecuperacion(correo);
-    alert(`Se ha enviado un enlace de recuperación a ${correo}`);
-    console.log('Link de recuperación:', res.enlace);
-    setCorreo('');
+
+    try {
+      await solicitarRecuperacion(correo);
+      alert(`Se ha enviado un enlace de recuperación a ${correo}`);
+      setCorreo('');
+    } catch (error) {
+      alert('No se pudo enviar el correo. Intenta nuevamente.');
+      console.error(error);
+    }
   };
 
   return (
@@ -25,7 +32,7 @@ const Recuperacion: React.FC = () => {
         placeholder="ejemplo@correo.com"
       />
       <Boton classProp="btn-recuperacion" texto="Enviar" onClick={enviar} />
-      <Boton texto="Atrás" onClick={() => window.history.back()} />
+      <Boton texto="Atrás" onClick={() => navigate(-1)} />
     </FormularioBase>
   );
 };
