@@ -3,31 +3,35 @@ import { useNavigate } from 'react-router-dom';
 import FormularioBase from '../comunes/FormularioBase';
 import CampoTexto from '../comunes/CampoTexto';
 import CampoContraseña from '../comunes/CampoContraseña';
-import Boton from '../comunes/Boton';
+import Boton from '../comunes/BotonFormulario';
+import { loginUsuario } from '../../servicios/autenticacion';
 
 const Formulario: React.FC = () => {
   const navigate = useNavigate();
-  const [usuario, setUsuario] = useState('');
+  const [correo, setCorreo] = useState('');
   const [contraseña, setContraseña] = useState('');
 
-  const iniciarSesion = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const iniciarSesion = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const datosUsuario = {
-      usuario,
+      correo,
       contraseña,
     };
-    localStorage.setItem(usuario, JSON.stringify(datosUsuario));
+    const data = await loginUsuario(datosUsuario);
+    localStorage.setItem("usuario", JSON.stringify(data.usuario));
     alert('Inicio de sesión exitoso');
+    setCorreo('');
+    setContraseña('');
     navigate('/perfil');
   };
   return (
     <FormularioBase titulo="Iniciar sesión">
       <CampoTexto
-        label="Usuario"
+        label="Correo electrónico"
         type="text"
-        value={usuario}
-        onChange={(e) => setUsuario(e.target.value)}
-        placeholder="Ingresa tu usuario"
+        value={correo}
+        onChange={(e) => setCorreo(e.target.value)}
+        placeholder="Ingresa tu correo"
       />
       <CampoContraseña
         label="Contraseña"
@@ -39,7 +43,7 @@ const Formulario: React.FC = () => {
         texto="Iniciar sesión"
         tipo="submit"
         classProp="btn-iniciar"
-        onClick={() => iniciarSesion}
+        onClick={iniciarSesion}
       />
     </FormularioBase>
   );

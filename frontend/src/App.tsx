@@ -19,6 +19,7 @@ import Inventario from './paginas/Inventario';
 import GestionUsuarios from './paginas/GestionUsuarios';
 import Contacto from './paginas/Contacto';
 import DashboardAdmin from './paginas/DashboardAdmin';
+import RutaProtegida from './paginas/RutaProtegida';
 
 const App: React.FC = () => {
   return (
@@ -32,14 +33,63 @@ const App: React.FC = () => {
         <Route path="/ingreso" element={<IniciarSesion />} />
         <Route path="/recuperacion" element={<Recuperacion />} />
         <Route path="/cambiarcontraseña" element={<Cambiarcontraseña />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/reservas" element={<Reservas />} />
-        <Route path="/misreservas" element={<MisReservas />} />
-        <Route path="/confirmacion" element={<Confirmaciones />} />
-        <Route path="/inventario" element={<Inventario />} />
-        <Route path="/gestionusuarios" element={<GestionUsuarios />} />
+        <Route
+          path="/perfil"
+          element={
+            <RutaProtegida>
+              <Perfil />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/reservas"
+          element={
+            <RutaProtegida>
+              <Reservas />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/misreservas"
+          element={
+            <RutaProtegida>
+              <MisReservas />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/confirmacion"
+          element={
+            <RutaProtegida>
+              <Confirmaciones />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/inventario"
+          element={
+            <RutaProtegida>
+              <Inventario />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/gestionusuarios"
+          element={
+            <RutaProtegida>
+              <GestionUsuarios />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <RutaProtegida>
+              <DashboardAdmin />
+            </RutaProtegida>
+          }
+        />
         <Route path="/contacto" element={<Contacto />} />
-        <Route path="/dashboard" element={<DashboardAdmin />} />
         <Route
           path="*"
           element={

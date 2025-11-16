@@ -21,6 +21,15 @@ export const loginUsuario = async (credenciales: { correo: string; contraseña: 
   return data;
 };
 
+export const actualizarPerfil = async (id: string, datos: any) => {
+  const { data } = await API.put(`/usuarios/${id}`, datos, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return data;
+};
+
 export const cerrarSesion = () => {
   localStorage.removeItem("token");
 };

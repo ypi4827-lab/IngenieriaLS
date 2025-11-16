@@ -45,8 +45,8 @@ const TablaUsuarios: React.FC<Props> = ({ usuarios, onCambiarRol, onCambiarEstad
                 </span>
               </td>
               <td className="acciones-td">
-                <button className="btn-editar" onClick={() => setUsuarioSeleccionado(u)}>✏️</button>
-                <button className="btn-eliminar" onClick={() => setUsuarioDesactivar(u)}>
+                <button title="Editar" className="btn-editar" onClick={() => setUsuarioSeleccionado(u)}>✏️</button>
+                <button title="Activar/Desactivar" className="btn-eliminar" onClick={() => setUsuarioDesactivar(u)}>
                   {u.activo ? "❌" : "✅"}
                 </button>
               </td>

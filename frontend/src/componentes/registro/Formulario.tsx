@@ -3,7 +3,9 @@ import FormularioBase from '../comunes/FormularioBase';
 import CampoTexto from '../comunes/CampoTexto';
 import CampoContraseña from '../comunes/CampoContraseña';
 import CampoTelefono from '../comunes/CampoTelefono';
-import Boton from '../comunes/Boton';
+import Boton from '../comunes/BotonFormulario';
+import { registrarUsuario } from '../../servicios/autenticacion';
+import { useNavigate } from 'react-router-dom';
 
 const Formulario: React.FC = () => {
   const [nombre, setNombre] = useState('');
@@ -11,22 +13,37 @@ const Formulario: React.FC = () => {
   const [telefono, setTelefono] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [confirmarContraseña, setConfirmarContraseña] = useState('');
+  const navigate = useNavigate();
 
-  const registrarse = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const registrarse = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (contraseña !== confirmarContraseña) {
       alert('Las contraseñas no coinciden');
       return;
     }
-    const nuevoUsuario = {
-      nombre,
-      correo,
-      telefono,
-      TipoAcceso: "cliente",
-      contraseña,
-    };
-    localStorage.setItem(nombre, JSON.stringify(nuevoUsuario));
-    alert('Registro exitoso');
+    try {
+      const nuevoUsuario = {
+        nombre,
+        correo,
+        telefono,
+        rol: 'cliente',
+        contraseña,
+      };
+      await registrarUsuario(nuevoUsuario);
+      alert('Registro exitoso');
+      setNombre('');
+      setCorreo('');
+      setTelefono('');
+      setContraseña('');
+      setConfirmarContraseña('');
+      navigate('/ingreso');
+    } catch (error: any) {
+      console.error('Error al registrar:', error);
+      alert(
+        '❌ Error al registrar usuario: ' +
+          (error.response?.data?.mensaje || 'Inténtalo nuevamente')
+      );
+    }
   };
   return (
     <FormularioBase titulo="Registro de nuevo usuario">
@@ -60,7 +77,7 @@ const Formulario: React.FC = () => {
       />
 
       <Boton
-        onClick={() => registrarse}
+        onClick={registrarse}
         tipo="submit"
         classProp="btn-verde"
         texto="Registrarse"

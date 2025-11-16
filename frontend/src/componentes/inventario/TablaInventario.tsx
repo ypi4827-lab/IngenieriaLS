@@ -16,7 +16,11 @@ interface Props {
   onEditar: (eq: Equipo) => void;
 }
 
-const TablaInventario: React.FC<Props> = ({ equipos, onEliminar, onEditar }) => {
+const TablaInventario: React.FC<Props> = ({
+  equipos,
+  onEliminar,
+  onEditar,
+}) => {
   const [idSeleccionado, setIdSeleccionado] = useState<number | null>(null);
   const [equipoEditar, setEquipoEditar] = useState<Equipo | null>(null);
 
@@ -57,6 +61,7 @@ const TablaInventario: React.FC<Props> = ({ equipos, onEliminar, onEditar }) => 
                   <button
                     className="btn-eliminar"
                     onClick={() => setIdSeleccionado(eq.id)}
+                    title="Eliminar"
                   >
                     🗑️
                   </button>
