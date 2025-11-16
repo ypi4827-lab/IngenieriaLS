@@ -29,13 +29,9 @@ const Inventario: React.FC = () => {
   }, []);
 
   const agregarEquipo = async (eq: Equipo) => {
-    try {
-      const nuevo = await crearEquipo(eq);
-      setEquipos((prev) => [...prev, nuevo]);
-      return nuevo;
-    } catch (error) {
-      throw error;
-    }
+    const nuevo = await crearEquipo(eq);
+    setEquipos((prev) => [...prev, nuevo]);
+    return nuevo;
   };
 
   const borrarEquipo = async (id: string) => {
@@ -43,6 +39,7 @@ const Inventario: React.FC = () => {
       await eliminarEquipo(id);
       setEquipos((prev) => prev.filter((eq) => eq._id !== id));
     } catch (error) {
+      console.log(error);
       alert('Error al eliminar el equipo.');
     }
   };
@@ -59,6 +56,7 @@ const Inventario: React.FC = () => {
         prev.map((eq) => (eq._id === actualizado._id ? actualizado : eq))
       );
     } catch (error) {
+      console.log(error);
       alert('Error al actualizar el equipo.');
     }
   };

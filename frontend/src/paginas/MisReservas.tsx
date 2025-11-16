@@ -28,6 +28,7 @@ const MisReservas: React.FC = () => {
         }
         setReservas(data);
       } catch (error) {
+        console.error('Error al cargar las reservas:', error);
         alert('Error al cargar las reservas');
       } finally {
         setCargando(false);

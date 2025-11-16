@@ -17,6 +17,7 @@ const RestablecerContraseña = () => {
       alert('Contraseña cambiada correctamente');
       navigate('/ingreso');
     } catch (error) {
+      console.error('Error al restablecer la contraseña:', error);
       alert('Token inválido o expirado');
     }
   };
