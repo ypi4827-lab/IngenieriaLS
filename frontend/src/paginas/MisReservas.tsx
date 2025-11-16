@@ -19,8 +19,6 @@ const MisReservas: React.FC = () => {
       try {
         let data: Reserva[] = [];
 
-        console.log(usuario.nombre);
-
         if (usuario.rol === 'cliente') {
           data = await obtenerReservasCliente(usuario.id);
         } else if (usuario.rol === 'tecnico') {
@@ -30,7 +28,7 @@ const MisReservas: React.FC = () => {
         }
         setReservas(data);
       } catch (error) {
-        console.log('Error al cargar reservas:', error);
+        alert('Error al cargar las reservas');
       } finally {
         setCargando(false);
       }

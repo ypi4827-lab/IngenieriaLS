@@ -15,7 +15,6 @@ const BotonesTecnico: React.FC<Props> = ({
 }) => {
   const ESTADOS = ['Pendiente', 'Confirmada', 'Finalizada', 'Cancelada'];
 
-  // Filtrar todos los estados EXCEPTO el actual
   const estadosDisponibles = ESTADOS.filter((e) => e !== estadoActual);
 
   const cambiarEstado = async (estado: string) => {
@@ -24,7 +23,6 @@ const BotonesTecnico: React.FC<Props> = ({
       onActualizada();
     } catch (error) {
       alert('Error al actualizar la reserva');
-      console.log(error);
     }
   };
 

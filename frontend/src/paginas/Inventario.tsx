@@ -30,13 +30,10 @@ const Inventario: React.FC = () => {
 
   const agregarEquipo = async (eq: Equipo) => {
     try {
-      console.log(eq);
-
       const nuevo = await crearEquipo(eq);
       setEquipos((prev) => [...prev, nuevo]);
       return nuevo;
     } catch (error) {
-      console.log('Error al crear el equipo', error);
       throw error;
     }
   };

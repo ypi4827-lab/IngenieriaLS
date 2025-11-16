@@ -98,7 +98,6 @@ const DashboardAdmin: React.FC = () => {
         Revisa el estado general del sistema y accede a los módulos principales.
       </p>
 
-      {/* Sección de métricas */}
       <div className="metricas-grid">
         {metricas.map((m) => (
           <TarjetaMetrica
@@ -111,7 +110,6 @@ const DashboardAdmin: React.FC = () => {
         ))}
       </div>
 
-      {/* Sección de accesos rápidos */}
       <div className="dashboard-grid">
         {acciones.map((accion) => (
           <TarjetaAccion

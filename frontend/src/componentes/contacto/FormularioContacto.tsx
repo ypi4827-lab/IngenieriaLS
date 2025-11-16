@@ -14,7 +14,6 @@ const FormularioContacto: React.FC = () => {
       return;
     }
 
-    // ⚙️ Aquí podrías conectar con un servicio de correo (EmailJS, API, etc.)
     alert(`Gracias por contactarnos, ${nombre}. Te responderemos pronto.`);
     setNombre('');
     setCorreo('');

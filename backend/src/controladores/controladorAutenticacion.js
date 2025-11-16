@@ -97,7 +97,7 @@ exports.solicitarRecuperacion = async (req, res) => {
     const token = crypto.randomBytes(32).toString("hex")
 
     usuario.restablecerToken = token
-    usuario.expiraToken = Date.now() + 3600000 // 1 hora
+    usuario.expiraToken = Date.now() + 3600000
     await usuario.save()
 
     const enlace = `${process.env.FRONTEND_URL}/recuperar/${token}`

@@ -33,7 +33,6 @@ const Reservas: React.FC = () => {
       localStorage.setItem('ultimaReserva', JSON.stringify(respuesta));
       navigate('/confirmacion');
     } catch (error) {
-      console.log(error);
       alert('Error al crear la reserva. Intenta nuevamente.');
     }
   };
