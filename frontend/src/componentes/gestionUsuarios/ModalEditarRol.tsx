@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../estilos/gestionusuarios.css";
 
 interface Usuario {
-  id: number;
+  _id: string;
   nombre: string;
   rol: "cliente" | "técnico" | "asesor" | "administrador";
 }
@@ -22,7 +22,7 @@ const ModalEditarRol: React.FC<Props> = ({ usuario, onConfirmar, onCancelar }) =
         <h4>Cambiar rol de {usuario.nombre}</h4>
         <select value={rol} onChange={(e) => setRol(e.target.value as Usuario["rol"])}>
           <option value="cliente">Cliente</option>
-          <option value="técnico">Técnico</option>
+          <option value="tecnico">Técnico</option>
           <option value="asesor">Asesor</option>
           <option value="administrador">Administrador</option>
         </select>

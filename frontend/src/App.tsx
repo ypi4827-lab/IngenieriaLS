@@ -52,7 +52,7 @@ const App: React.FC = () => {
         <Route
           path="/reservas"
           element={
-            <RutaProtegida rolPermitido='cliente'>
+            <RutaProtegida rolesPermitidos={['cliente']}>
               <Reservas />
             </RutaProtegida>
           }
@@ -60,7 +60,7 @@ const App: React.FC = () => {
         <Route
           path="/misreservas"
           element={
-            <RutaProtegida>
+            <RutaProtegida rolesPermitidos={['cliente', 'tecnico']}>
               <MisReservas />
             </RutaProtegida>
           }
@@ -68,7 +68,7 @@ const App: React.FC = () => {
         <Route
           path="/confirmacion"
           element={
-            <RutaProtegida rolPermitido='cliente'>
+            <RutaProtegida rolesPermitidos={['cliente']}>
               <Confirmaciones />
             </RutaProtegida>
           }
@@ -76,7 +76,7 @@ const App: React.FC = () => {
         <Route
           path="/inventario"
           element={
-            <RutaProtegida rolPermitido='asesor'>
+            <RutaProtegida rolesPermitidos={['asesor']}>
               <Inventario />
             </RutaProtegida>
           }
@@ -84,7 +84,7 @@ const App: React.FC = () => {
         <Route
           path="/gestionusuarios"
           element={
-            <RutaProtegida rolPermitido='administrador'>
+            <RutaProtegida rolesPermitidos={['administrador']}>
               <GestionUsuarios />
             </RutaProtegida>
           }
@@ -92,7 +92,7 @@ const App: React.FC = () => {
         <Route
           path="/dashboard"
           element={
-            <RutaProtegida rolPermitido='administrador'>
+            <RutaProtegida rolesPermitidos={['administrador']}>
               <DashboardAdmin />
             </RutaProtegida>
           }

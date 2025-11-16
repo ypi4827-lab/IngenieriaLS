@@ -17,12 +17,16 @@ const Formulario: React.FC = () => {
       correo,
       contraseña,
     };
-    const data = await loginUsuario(datosUsuario);
-    localStorage.setItem("usuario", JSON.stringify(data.usuario));
-    alert('Inicio de sesión exitoso');
-    setCorreo('');
-    setContraseña('');
-    navigate('/perfil');
+    try {
+      const data = await loginUsuario(datosUsuario);
+      localStorage.setItem('usuario', JSON.stringify(data.usuario));
+      alert('Inicio de sesión exitoso');
+      setCorreo('');
+      setContraseña('');
+      navigate('/perfil');
+    } catch (error) {
+      alert('Error al iniciar sesión. Por favor, verifica tus credenciales.');
+    }
   };
   return (
     <FormularioBase titulo="Iniciar sesión">

@@ -9,7 +9,7 @@ const servicioSchema = new mongoose.Schema({
     required: true,
   },
   costoBase: { type: Number },
-  duracionEstimada: { type: String, required: true }, 
+  duracionEstimada: { type: String, required: true },
   imagenServicio: { type: String },
 });
 

@@ -4,17 +4,17 @@ import ModalEditarRol from "./ModalEditarRol";
 import ModalConfirmarDesactivar from "./ModalConfirmarDesactivar";
 
 interface Usuario {
-  id: number;
+  _id: string;
   nombre: string;
   correo: string;
-  rol: "cliente" | "técnico" | "asesor" | "administrador";
+  rol: "cliente" | "tecnico" | "asesor" | "administrador";
   activo: boolean;
 }
 
 interface Props {
   usuarios: Usuario[];
-  onCambiarRol: (id: number, nuevoRol: Usuario["rol"]) => void;
-  onCambiarEstado: (id: number) => void;
+  onCambiarRol: (id: string, nuevoRol: Usuario["rol"]) => void;
+  onCambiarEstado: (id: string) => void;
 }
 
 const TablaUsuarios: React.FC<Props> = ({ usuarios, onCambiarRol, onCambiarEstado }) => {
@@ -35,7 +35,7 @@ const TablaUsuarios: React.FC<Props> = ({ usuarios, onCambiarRol, onCambiarEstad
         </thead>
         <tbody>
           {usuarios.map((u) => (
-            <tr key={u.id}>
+            <tr key={u._id}>
               <td>{u.nombre}</td>
               <td>{u.correo}</td>
               <td>{u.rol}</td>
@@ -59,7 +59,7 @@ const TablaUsuarios: React.FC<Props> = ({ usuarios, onCambiarRol, onCambiarEstad
         <ModalEditarRol
           usuario={usuarioSeleccionado}
           onConfirmar={(nuevoRol) => {
-            onCambiarRol(usuarioSeleccionado.id, nuevoRol);
+            onCambiarRol(usuarioSeleccionado._id, nuevoRol);
             setUsuarioSeleccionado(null);
           }}
           onCancelar={() => setUsuarioSeleccionado(null)}
@@ -70,7 +70,7 @@ const TablaUsuarios: React.FC<Props> = ({ usuarios, onCambiarRol, onCambiarEstad
         <ModalConfirmarDesactivar
           usuario={usuarioDesactivar}
           onConfirmar={() => {
-            onCambiarEstado(usuarioDesactivar.id);
+            onCambiarEstado(usuarioDesactivar._id);
             setUsuarioDesactivar(null);
           }}
           onCancelar={() => setUsuarioDesactivar(null)}

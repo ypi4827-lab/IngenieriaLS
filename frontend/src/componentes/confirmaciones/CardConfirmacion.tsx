@@ -4,7 +4,7 @@ import "../../estilos/confirmaciones.css";
 interface Reserva {
   servicio: string;
   tecnico: string;
-  fecha: string;
+  fechaProgramada: string;
   hora: string;
   estado: string;
 }
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const CardConfirmacion: React.FC<Props> = ({ reserva }) => {
-  const { servicio, tecnico, fecha, hora, estado } = reserva;
+  const { servicio, tecnico, fechaProgramada, hora, estado } = reserva;
 
   return (
     <div className="card-confirmacion">
@@ -22,7 +22,7 @@ const CardConfirmacion: React.FC<Props> = ({ reserva }) => {
       <h3>{estado}</h3>
       <p><strong>Servicio:</strong> {servicio}</p>
       <p><strong>Técnico asignado:</strong> {tecnico}</p>
-      <p><strong>Fecha:</strong> {fecha}</p>
+      <p><strong>Fecha:</strong> {fechaProgramada}</p>
       <p><strong>Hora:</strong> {hora}</p>
       <p className="mensaje-final">
         Te enviaremos un correo con los detalles de la cita.  
