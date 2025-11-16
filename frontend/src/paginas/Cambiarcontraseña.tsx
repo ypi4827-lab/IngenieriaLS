@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import '../estilos/cambiarcontraseña.css';
 import { cambiarContraseña } from '../servicios/autenticacion';
 import FormularioBase from '../componentes/comunes/FormularioBase';
-import CampoTexto from '../componentes/comunes/CampoTexto';
 import Boton from '../componentes/comunes/BotonFormulario';
+import CampoContraseña from '../componentes/comunes/CampoContraseña';
 
 const Cambiarcontraseña: React.FC = () => {
   const navigate = useNavigate();
@@ -31,18 +31,16 @@ const Cambiarcontraseña: React.FC = () => {
   };
   return (
     <FormularioBase titulo="Cambiar contraseña">
-      <CampoTexto
+      <CampoContraseña
         label="Ingresa tu nueva contraseña"
         value={contraseñaNueva}
         onChange={(e) => setContraseñaNueva(e.target.value)}
-        type="password"
         placeholder="********"
       />
-      <CampoTexto
+      <CampoContraseña
         label="Confirma tu nueva contraseña"
         value={confirmarContraseña}
         onChange={(e) => setConfirmarContraseña(e.target.value)}
-        type="password"
         placeholder="********"
       />
       <Boton texto="Cambiar contraseña" onClick={modificarContraseña}></Boton>
