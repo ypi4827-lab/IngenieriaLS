@@ -1,73 +1,263 @@
-# React + TypeScript + Vite
+# 🚀 Ingeniería LS – Plataforma de Gestión de Servicios Técnicos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma web completa para la gestión de clientes, técnicos, reservas de servicios, inventario de equipos y administración general.
+Desarrollada para la empresa **Ingeniería LS**, especializada en mantenimiento de básculas, balanzas y sierras cárnicas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Enlaces del Proyecto
 
-## React Compiler
+### 🖥️ **Frontend (Producción – Vercel)**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👉 [https://ingenieria-ls-lrnf.vercel.app/](https://ingenieria-ls-lrnf.vercel.app/)
 
-## Expanding the ESLint configuration
+### ⚙️ **Backend / API (Producción – Render)**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+👉 [https://ingenierials.onrender.com/](https://ingenierials.onrender.com/)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# 📁 Estructura del Proyecto
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+El proyecto está dividido en:
+
+```
+/frontend
+/backend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Ambos funcionan de manera independiente, pero integrados mediante API REST.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 🎨 FRONTEND – React + TypeScript + Vite
+
+### 🔧 Tecnologías principales
+
+- **React 18**
+- **TypeScript**
+- **Vite**
+- **React Router DOM**
+- **Axios**
+- **Context API (manejo de autenticación)**
+- **CSS Modules / Estilos personalizados**
+
+### 📌 Funcionalidades del Frontend
+
+### 👤 **Autenticación**
+
+- Registro de usuarios
+- Inicio de sesión
+- Cambio de contraseña
+- Recuperación de contraseña por correo
+- Edición de perfil
+- Manejo de roles y rutas protegidas
+
+### 📅 **Gestión de Reservas**
+
+- Cliente: crear y ver sus reservas
+- Técnico: ver sus reservas asignadas y cambiar estado
+- Admin: ver todas las reservas
+
+Estados disponibles:
+
+- Pendiente
+- Confirmada
+- Finalizada
+- Cancelada
+
+### 🛠️ **Inventario de Equipos**
+
+- CRUD completo de equipos
+- Código autogenerado (EQ-001, EQ-002, ...)
+- Campos: nombre, marca, modelo, estado
+- Ventanas modales para editar y eliminar
+
+### 👥 **Gestión de Usuarios (Administrador)**
+
+- Listar usuarios
+- Cambiar roles
+- Activar / desactivar usuarios
+- Edición de datos
+
+### 🔐 **Rutas protegidas por roles**
+
+- cliente
+- técnico
+- asesor
+- administrador (acceso total)
+
+---
+
+# ⚙️ BACKEND – Node.js + Express + MongoDB
+
+### 🔧 Tecnologías principales
+
+- **Node.js + Express**
+- **MongoDB + Mongoose**
+- **JWT (autenticación)**
+- **bcryptjs (hash de contraseñas)**
+- **Nodemailer (recuperación por correo)**
+- **CORS**
+- **Dotenv**
+
+---
+
+# 📌 Funcionalidades del Backend
+
+## 🔐 Autenticación y Seguridad
+
+- Registro de usuarios
+- Login con JWT
+- Cambio de contraseña (requiere token)
+- Recuperación de contraseña mediante enlace por correo
+- Restablecimiento usando token temporal
+
+## 📅 API de Reservas
+
+Rutas:
+
 ```
+POST    /reservas
+GET     /reservas
+GET     /reservas?clienteId=
+GET     /reservas?tecnicoAsignado=
+PUT     /reservas/:id
+DELETE  /reservas/:id
+```
+
+## 🛠️ API de Inventario (Equipos)
+
+Rutas:
+
+```
+GET     /equipos
+POST    /equipos
+PUT     /equipos/:id
+DELETE  /equipos/:id
+```
+
+Incluye autogeneración de código:
+
+```
+EQ-001
+EQ-002
+EQ-003 ...
+```
+
+## 👥 API de Usuarios
+
+Rutas:
+
+```
+GET     /usuarios
+POST    /usuarios
+PUT     /usuarios/:id
+DELETE  /usuarios/:id
+```
+
+Roles:
+
+- cliente
+- técnico
+- asesor
+- administrador
+
+---
+
+# 🧪 Cómo ejecutar el proyecto localmente
+
+## 1️⃣ Clonar repositorio
+
+```
+git clone https://github.com/tu-repo/IngenieriaLS.git
+cd IngenieriaLS
+```
+
+---
+
+# ⚙️ BACKEND – Instalación y ejecución
+
+### 📁 Entrar a la carpeta backend:
+
+```
+cd backend
+```
+
+### 📦 Instalar dependencias:
+
+```
+npm install
+```
+
+### ▶️ Ejecutar el servidor:
+
+```
+npm start
+```
+
+El backend corre en:
+
+```
+http://localhost:4000
+```
+
+---
+
+# 🎨 FRONTEND – Instalación y ejecución
+
+### 📁 Entrar a la carpeta frontend:
+
+```
+cd frontend
+```
+
+### 📦 Instalar dependencias:
+
+```
+npm install
+```
+
+### ▶️ Ejecutar la app:
+
+```
+npm run dev
+```
+
+Frontend disponible en:
+
+```
+http://localhost:5173
+```
+
+---
+
+# 🌍 Despliegue
+
+### 🚀 Frontend – Vercel
+
+- Deploy automático desde GitHub
+- Manejo de SPA para rutas protegidas
+- Configuración de `vercel.json` para evitar errores 404
+
+### 🛠️ Backend – Render
+
+- Deploy automático por GitHub
+- Servidor siempre activo (modo web service)
+- Variables de entorno seguras
+
+---
+
+# 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas!
+Abre un **issue** o **pull request** en GitHub para mejoras o errores.
+
+---
+
+# 📄 Licencia
+
+Proyecto bajo licencia **MIT**.
+Libre para uso personal y comercial.
+
+---
