@@ -1,25 +1,28 @@
-const Equipo = require("../modelos/Equipo");
+const Equipo = require("../modelos/Equipo")
 
 exports.obtenerEquipos = async (req, res) => {
   try {
-    const equipos = await Equipo.find();
-    res.json(equipos);
+    const equipos = await Equipo.find()
+    res.json(equipos)
   } catch (error) {
     res
       .status(500)
-      .json({ mensaje: "Error del servidor", error: error.message });
+      .json({ mensaje: "Error del servidor", error: error.message })
   }
-};
+}
 
 exports.crearEquipo = async (req, res) => {
   try {
-    const nuevo = new Equipo(req.body);
-    await nuevo.save();
-    res.status(201).json(nuevo);
+    console.log("Datos recibidos para crear equipo:", req.body)
+    const nuevo = new Equipo(req.body)
+    await nuevo.save()
+    res.status(201).json(nuevo)
   } catch (error) {
-    res.status(400).json({ mensaje: "Error al crear el equipo", error });
+    console.log(error)
+    console.log("Error al crear el equipo:", error)
+    res.status(400).json({ mensaje: "Error al crear el equipo", error })
   }
-};
+}
 
 exports.actualizarEquipo = async (req, res) => {
   try {
@@ -27,18 +30,18 @@ exports.actualizarEquipo = async (req, res) => {
       req.params.id,
       req.body,
       { new: true }
-    );
-    res.json(actualizado);
+    )
+    res.json(actualizado)
   } catch (error) {
-    res.status(404).json({ mensaje: "Equipo no encontrado" });
+    res.status(404).json({ mensaje: "Equipo no encontrado" })
   }
-};
+}
 
 exports.eliminarEquipo = async (req, res) => {
   try {
-    await Equipo.findByIdAndDelete(req.params.id);
-    res.json({ mensaje: "Equipo eliminado correctamente" });
+    await Equipo.findByIdAndDelete(req.params.id)
+    res.json({ mensaje: "Equipo eliminado correctamente" })
   } catch (error) {
-    res.status(404).json({ mensaje: "Equipo no encontrado" });
+    res.status(404).json({ mensaje: "Equipo no encontrado" })
   }
-};
+}

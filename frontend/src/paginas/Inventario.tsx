@@ -1,49 +1,87 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../estilos/inventario.css';
 import TablaInventario from '../componentes/inventario/TablaInventario';
 import FormularioEquipo from '../componentes/inventario/FormularioEquipo';
-
-interface Equipo {
-  id: number;
-  nombre: string;
-  codigo: string;
-  estado: 'Disponible' | 'En mantenimiento' | 'Dañado';
-}
+import {
+  obtenerEquipos,
+  crearEquipo,
+  actualizarEquipo,
+  eliminarEquipo,
+  type Equipo,
+} from '../servicios/equipos';
 
 const Inventario: React.FC = () => {
-  const [equipos, setEquipos] = useState<Equipo[]>([
-    { id: 1, nombre: 'Multímetro', codigo: 'EQ001', estado: 'Disponible' },
-    {
-      id: 2,
-      nombre: 'Taladro eléctrico',
-      codigo: 'EQ002',
-      estado: 'En mantenimiento',
-    },
-  ]);
+  const [equipos, setEquipos] = useState<Equipo[]>([]);
+  const [cargando, setCargando] = useState(true);
 
-  const agregarEquipo = (nuevo: Equipo) => {
-    setEquipos([...equipos, { ...nuevo, id: Date.now() }]);
+  useEffect(() => {
+    const cargar = async () => {
+      try {
+        const data = await obtenerEquipos();
+        setEquipos(data);
+      } catch (error) {
+        console.error('Error al cargar equipos:', error);
+      } finally {
+        setCargando(false);
+      }
+    };
+    cargar();
+  }, []);
+
+  const agregarEquipo = async (eq: Equipo) => {
+    try {
+      console.log(eq);
+
+      const nuevo = await crearEquipo(eq);
+      setEquipos((prev) => [...prev, nuevo]);
+      return nuevo;
+    } catch (error) {
+      console.log('Error al crear el equipo', error);
+      throw error;
+    }
   };
 
-  const eliminarEquipo = (id: number) => {
-    setEquipos(equipos.filter((eq) => eq.id !== id));
+  const borrarEquipo = async (id: string) => {
+    try {
+      await eliminarEquipo(id);
+      setEquipos((prev) => prev.filter((eq) => eq._id !== id));
+    } catch (error) {
+      alert('Error al eliminar el equipo.');
+    }
   };
 
-  const editarEquipo = (actualizado: Equipo) => {
-    setEquipos((prev) =>
-      prev.map((eq) => (eq.id === actualizado.id ? actualizado : eq))
-    );
+  const editarEquipo = async (equipoActualizado: Equipo) => {
+    if (!equipoActualizado._id) return;
+
+    try {
+      const actualizado = await actualizarEquipo(
+        equipoActualizado._id,
+        equipoActualizado
+      );
+      setEquipos((prev) =>
+        prev.map((eq) => (eq._id === actualizado._id ? actualizado : eq))
+      );
+    } catch (error) {
+      alert('Error al actualizar el equipo.');
+    }
   };
 
   return (
     <div className="inventario-contenedor">
       <h2 className="inventario-titulo">Gestión de Inventario</h2>
-      <FormularioEquipo onAgregar={agregarEquipo} />
-      <TablaInventario
-        equipos={equipos}
-        onEliminar={eliminarEquipo}
-        onEditar={editarEquipo}
-      />
+
+      {cargando ? (
+        <p>Cargando equipos...</p>
+      ) : (
+        <>
+          <FormularioEquipo onAgregar={agregarEquipo} />
+          <TablaInventario
+            equipos={equipos}
+            onEliminar={borrarEquipo}
+            onEditar={editarEquipo}
+          />
+        </>
+      )}
     </div>
   );
 };

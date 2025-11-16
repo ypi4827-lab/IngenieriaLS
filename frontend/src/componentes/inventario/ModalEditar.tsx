@@ -1,13 +1,6 @@
-// src/componentes/inventario/ModalEditar.tsx
-import React, { useState, useEffect } from "react";
-import "../../estilos/inventario.css";
-
-interface Equipo {
-  id: number;
-  nombre: string;
-  codigo: string;
-  estado: "Disponible" | "En mantenimiento" | "Dañado";
-}
+import React, { useState } from 'react';
+import '../../estilos/inventario.css';
+import { type Equipo } from '../../servicios/equipos';
 
 interface Props {
   equipo: Equipo;
@@ -17,18 +10,25 @@ interface Props {
 
 const ModalEditar: React.FC<Props> = ({ equipo, onConfirmar, onCancelar }) => {
   const [nombre, setNombre] = useState(equipo.nombre);
-  const [codigo, setCodigo] = useState(equipo.codigo);
-  const [estado, setEstado] = useState<Equipo["estado"]>(equipo.estado);
-
-  useEffect(() => {
-    setNombre(equipo.nombre);
-    setCodigo(equipo.codigo);
-    setEstado(equipo.estado);
-  }, [equipo]);
+  const [marca, setMarca] = useState(equipo.marca);
+  const [modelo, setModelo] = useState(equipo.modelo);
+  const [estado, setEstado] = useState<Equipo['estado']>(equipo.estado);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onConfirmar({ ...equipo, nombre, codigo, estado });
+
+    if (!nombre || !marca) {
+      alert('Los campos nombre, código y marca son obligatorios.');
+      return;
+    }
+
+    onConfirmar({
+      ...equipo,
+      nombre,
+      marca,
+      modelo,
+      estado,
+    });
   };
 
   return (
@@ -39,19 +39,29 @@ const ModalEditar: React.FC<Props> = ({ equipo, onConfirmar, onCancelar }) => {
           <label>Nombre</label>
           <input value={nombre} onChange={(e) => setNombre(e.target.value)} />
 
-          <label>Código</label>
-          <input value={codigo} onChange={(e) => setCodigo(e.target.value)} />
+          <label>Marca</label>
+          <input value={marca} onChange={(e) => setMarca(e.target.value)} />
+
+          <label>Modelo</label>
+          <input value={modelo} onChange={(e) => setModelo(e.target.value)} />
 
           <label>Estado</label>
-          <select value={estado} onChange={(e) => setEstado(e.target.value as Equipo["estado"])}>
+          <select
+            value={estado}
+            onChange={(e) => setEstado(e.target.value as Equipo['estado'])}
+          >
             <option value="Disponible">Disponible</option>
             <option value="En mantenimiento">En mantenimiento</option>
             <option value="Dañado">Dañado</option>
           </select>
 
           <div className="modal-botones">
-            <button type="submit" className="btn-confirmar">Guardar</button>
-            <button type="button" className="btn-cancelar" onClick={onCancelar}>Cancelar</button>
+            <button type="submit" className="btn-confirmar">
+              Guardar
+            </button>
+            <button type="button" className="btn-cancelar" onClick={onCancelar}>
+              Cancelar
+            </button>
           </div>
         </form>
       </div>

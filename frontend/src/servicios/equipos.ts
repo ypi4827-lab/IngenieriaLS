@@ -3,11 +3,10 @@ import API from "./api";
 export interface Equipo {
   _id?: string;
   nombre: string;
-  codigo: string;
+  codigo?: string;
   estado: "Disponible" | "En mantenimiento" | "Dañado";
   marca?: string;
   modelo?: string;
-  imagenEquipo?: string;
 }
 
 export const obtenerEquipos = async (): Promise<Equipo[]> => {

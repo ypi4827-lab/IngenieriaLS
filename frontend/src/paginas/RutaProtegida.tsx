@@ -3,17 +3,18 @@ import { Navigate } from 'react-router-dom';
 
 const RutaProtegida = ({
   children,
-  rolPermitido,
+  rolesPermitidos,
 }: {
   children: React.JSX.Element;
-  rolPermitido?: string;
+  rolesPermitidos?: string[];
 }) => {
   const token = localStorage.getItem('token');
   const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
 
   if (!token) return <Navigate to="/ingreso" />;
   if (usuario.rol === 'administrador') return children;
-  if (rolPermitido && usuario.rol !== rolPermitido) return <Navigate to="/ingreso" />;
+  if (rolesPermitidos && !rolesPermitidos.includes(usuario.rol))
+    return <Navigate to="/ingreso" />;
 
   return children;
 };

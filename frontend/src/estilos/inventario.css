@@ -5,7 +5,7 @@
   width: 95%;
   max-width: 650px;
   margin: 40px auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .inventario-titulo {
@@ -23,7 +23,8 @@
   margin-bottom: 25px;
 }
 
-input, select {
+input,
+select {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #aaa;
@@ -31,7 +32,8 @@ input, select {
   font-size: 1rem;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   border-color: #f2b6d0;
   box-shadow: 0 0 5px rgba(242, 182, 208, 0.5);
 }
@@ -60,7 +62,8 @@ input:focus, select:focus {
   overflow: hidden;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
@@ -77,9 +80,18 @@ th {
   font-size: 0.9rem;
 }
 
-.estado.disponible { background-color: #d4edda; color: #155724; }
-.estado.en-mantenimiento { background-color: #fff3cd; color: #856404; }
-.estado.dañado { background-color: #f8d7da; color: #721c24; }
+.estado.disponible {
+  background-color: #d4edda;
+  color: #155724;
+}
+.estado.en-mantenimiento {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.estado.dañado {
+  background-color: #f8d7da;
+  color: #721c24;
+}
 
 .btn-eliminar {
   background: transparent;
@@ -94,14 +106,13 @@ th {
   margin-top: 15px;
 }
 
-/* 🧊 Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,10 +150,101 @@ th {
   cursor: pointer;
 }
 
-/* 📱 Mobile-first responsive */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-editar {
+  background: linear-gradient(to bottom right, #a3d9ff, #f2b6d0);
+  padding: 25px 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.modal-editar h4 {
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.formulario-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-modal input,
+.formulario-modal select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.formulario-modal input:focus,
+.formulario-modal select:focus {
+  border-color: #f2b6d0;
+  box-shadow: 0 0 6px rgba(242, 182, 208, 0.5);
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.btn-confirmar {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-confirmar:hover {
+  background-color: #218838;
+}
+
+.btn-cancelar {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancelar:hover {
+  background-color: #c82333;
+}
+
 @media (min-width: 768px) {
   .inventario-contenedor {
     max-width: 750px;
     padding: 40px;
+  }
+  .modal-editar {
+    padding: 30px 40px;
   }
 }

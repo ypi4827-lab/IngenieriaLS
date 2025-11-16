@@ -2,17 +2,11 @@ import React, { useState } from 'react';
 import '../../estilos/inventario.css';
 import ModalEliminar from './ModalEliminar';
 import ModalEditar from './ModalEditar';
-
-interface Equipo {
-  id: number;
-  nombre: string;
-  codigo: string;
-  estado: string;
-}
+import { type Equipo } from '../../servicios/equipos';
 
 interface Props {
   equipos: Equipo[];
-  onEliminar: (id: number) => void;
+  onEliminar: (id: string) => void;
   onEditar: (eq: Equipo) => void;
 }
 
@@ -21,7 +15,7 @@ const TablaInventario: React.FC<Props> = ({
   onEliminar,
   onEditar,
 }) => {
-  const [idSeleccionado, setIdSeleccionado] = useState<number | null>(null);
+  const [idSeleccionado, setIdSeleccionado] = useState<string | null>(null);
   const [equipoEditar, setEquipoEditar] = useState<Equipo | null>(null);
 
   return (
@@ -32,15 +26,19 @@ const TablaInventario: React.FC<Props> = ({
             <tr>
               <th>Nombre</th>
               <th>Código</th>
+              <th>Marca</th>
+              <th>Modelo</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {equipos.map((eq) => (
-              <tr key={eq.id}>
+              <tr key={eq._id}>
                 <td>{eq.nombre}</td>
                 <td>{eq.codigo}</td>
+                <td>{eq.marca}</td>
+                <td>{eq.modelo || 'N/A'}</td>
                 <td>
                   <span
                     className={`estado ${eq.estado
@@ -60,7 +58,7 @@ const TablaInventario: React.FC<Props> = ({
                   </button>
                   <button
                     className="btn-eliminar"
-                    onClick={() => setIdSeleccionado(eq.id)}
+                    onClick={() => setIdSeleccionado(eq._id)}
                     title="Eliminar"
                   >
                     🗑️
