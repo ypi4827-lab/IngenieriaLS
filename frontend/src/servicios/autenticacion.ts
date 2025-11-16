@@ -1,13 +1,5 @@
 import API from './api';
-
-export interface Usuario {
-  _id?: string;
-  nombre: string;
-  correo: string;
-  contraseña: string;
-  telefono?: string;
-  rol?: string;
-}
+import type { Usuario } from './usuarios';
 
 export const registrarUsuario = async (usuario: Usuario) => {
   const { data } = await API.post('/autenticacion/registro', usuario);
@@ -23,7 +15,7 @@ export const loginUsuario = async (credenciales: {
   return data;
 };
 
-export const actualizarPerfil = async (id: string, datos: any) => {
+export const actualizarPerfil = async (id: string, datos: Usuario) => {
   const { data } = await API.put(`/usuarios/${id}`, datos, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,

@@ -2,14 +2,7 @@ import React, { useState } from "react";
 import "../../estilos/gestionusuarios.css";
 import ModalEditarRol from "./ModalEditarRol";
 import ModalConfirmarDesactivar from "./ModalConfirmarDesactivar";
-
-interface Usuario {
-  _id: string;
-  nombre: string;
-  correo: string;
-  rol: "cliente" | "tecnico" | "asesor" | "administrador";
-  activo: boolean;
-}
+import type { Usuario } from "../../servicios/usuarios";
 
 interface Props {
   usuarios: Usuario[];

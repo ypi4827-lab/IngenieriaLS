@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import "../../estilos/gestionusuarios.css";
-
-interface Usuario {
-  _id: string;
-  nombre: string;
-  rol: "cliente" | "técnico" | "asesor" | "administrador";
-}
+import type { Usuario } from "../../servicios/usuarios";
 
 interface Props {
   usuario: Usuario;

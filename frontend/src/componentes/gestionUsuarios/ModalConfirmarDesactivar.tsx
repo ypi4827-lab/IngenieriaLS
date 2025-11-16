@@ -1,10 +1,6 @@
 import React from "react";
 import "../../estilos/gestionusuarios.css";
-
-interface Usuario {
-  nombre: string;
-  activo: boolean;
-}
+import type { Usuario } from "../../servicios/usuarios";
 
 interface Props {
   usuario: Usuario;

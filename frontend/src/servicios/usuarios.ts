@@ -1,7 +1,7 @@
 import API from './api';
 
 export interface Usuario {
-  _id?: string;
+  _id: string;
   nombre: string;
   correo: string;
   telefono?: string;

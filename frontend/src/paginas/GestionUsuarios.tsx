@@ -2,14 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../estilos/gestionusuarios.css';
 import TablaUsuarios from '../componentes/gestionUsuarios/TablaUsuarios';
 import { actualizarUsuario, obtenerUsuarios } from '../servicios/usuarios';
-
-interface Usuario {
-  _id: string;
-  nombre: string;
-  correo: string;
-  rol: 'cliente' | 'tecnico' | 'asesor' | 'administrador';
-  activo: boolean;
-}
+import type { Usuario } from '../servicios/usuarios';
 
 const GestionUsuarios: React.FC = () => {
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
