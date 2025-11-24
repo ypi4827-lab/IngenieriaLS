@@ -8,8 +8,9 @@ interface Props {
 
 const CampoTelefono: React.FC<Props> = ({ value, onChange }) => (
   <div className="campo">
-    <label>Número de Telefono:</label>
+    <label htmlFor="telefono">Número de Telefono:</label>
     <input
+      id="telefono"
       type="tel"
       value={value}
       onChange={onChange}

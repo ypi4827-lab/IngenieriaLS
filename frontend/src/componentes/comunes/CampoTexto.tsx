@@ -12,8 +12,9 @@ interface Props {
 const CampoTexto: React.FC<Props> = ({ label, type = "text", value, onChange, placeholder }) => {
   return (
     <div className="campo">
-      <label>{label}</label>
+      <label htmlFor="texto">{label}</label>
       <input
+        id="texto"
         type={type}
         value={value}
         onChange={onChange}
