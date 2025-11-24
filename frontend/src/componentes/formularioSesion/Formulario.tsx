@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import FormularioBase from '../comunes/FormularioBase';
 import CampoTexto from '../comunes/CampoTexto';
 import CampoContraseña from '../comunes/CampoContraseña';
-import Boton from '../comunes/BotonFormulario';
+import Boton from '../comunes/Boton';
 import { loginUsuario } from '../../servicios/autenticacion';
 
 const Formulario: React.FC = () => {

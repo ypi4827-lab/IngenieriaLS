@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 interface Props {
   texto: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   tipo?: 'button' | 'submit' | 'reset';
   enlace?: string;
   classProp?: string;

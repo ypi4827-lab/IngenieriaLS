@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../estilos/cambiarcontraseña.css';
 import { cambiarContraseña } from '../servicios/autenticacion';
 import FormularioBase from '../componentes/comunes/FormularioBase';
-import Boton from '../componentes/comunes/BotonFormulario';
+import Boton from '../componentes/comunes/Boton';
 import CampoContraseña from '../componentes/comunes/CampoContraseña';
 
 const Cambiarcontraseña: React.FC = () => {
