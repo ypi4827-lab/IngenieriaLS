@@ -22,24 +22,27 @@ const FormularioContacto: React.FC = () => {
 
   return (
     <form className="formulario-contacto" onSubmit={handleSubmit}>
-      <label>Nombre</label>
+      <label htmlFor="nombre">Nombre</label>
       <input
+        id="nombre"
         type="text"
         value={nombre}
         onChange={(e) => setNombre(e.target.value)}
         placeholder="Tu nombre completo"
       />
 
-      <label>Correo electrónico</label>
+      <label htmlFor='correo'>Correo electrónico</label>
       <input
+        id="correo"
         type="email"
         value={correo}
         onChange={(e) => setCorreo(e.target.value)}
         placeholder="ejemplo@correo.com"
       />
 
-      <label>Mensaje</label>
+      <label htmlFor="mensaje">Mensaje</label>
       <textarea
+        id="mensaje"
         value={mensaje}
         onChange={(e) => setMensaje(e.target.value)}
         placeholder="Escribe tu mensaje aquí..."

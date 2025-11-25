@@ -16,15 +16,16 @@ const CalendarioDisponibilidad: React.FC<Props> = ({
 }) => {
   return (
     <div className="calendario-disponibilidad">
-      <label>Selecciona la fecha</label>
+      <label htmlFor="fecha">Selecciona la fecha</label>
       <input
+        id="fecha"
         type="date"
         value={fechaProgramada}
         onChange={(e) => setFechaProgramada(e.target.value)}
       />
 
-      <label>Selecciona la hora</label>
-      <select value={hora} onChange={(e) => setHora(e.target.value)}>
+      <label htmlFor="hora">Selecciona la hora</label>
+      <select id="hora" value={hora} onChange={(e) => setHora(e.target.value)}>
         <option value="">Selecciona una hora</option>
         <option value="08:00">08:00 AM</option>
         <option value="10:00">10:00 AM</option>

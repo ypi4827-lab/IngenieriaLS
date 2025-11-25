@@ -10,11 +10,12 @@ interface Props {
 }
 
 const CampoTexto: React.FC<Props> = ({ label, type = "text", value, onChange, placeholder }) => {
+  const id = label.toLowerCase().replace(/\s+/g, "-");
   return (
     <div className="campo">
-      <label htmlFor="texto">{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
-        id="texto"
+        id={id}
         type={type}
         value={value}
         onChange={onChange}

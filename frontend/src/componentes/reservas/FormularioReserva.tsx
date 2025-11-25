@@ -28,16 +28,16 @@ const FormularioReserva: React.FC<Props> = ({
   }, []);
   return (
     <div className="formulario-reserva">
-      <label>Tipo de Servicio</label>
-      <select value={servicio} onChange={(e) => setServicio(e.target.value)}>
+      <label htmlFor='servicio'>Tipo de Servicio</label>
+      <select id='servicio' value={servicio} onChange={(e) => setServicio(e.target.value)}>
         <option value="">Selecciona un servicio</option>
         <option value="Mantenimiento">Mantenimiento</option>
         <option value="Reparación">Reparación</option>
         <option value="Instalación">Instalación</option>
       </select>
 
-      <label>Técnico Disponible</label>
-      <select value={tecnico} onChange={(e) => setTecnico(e.target.value)}>
+      <label htmlFor="tecnico">Técnico Disponible</label>
+      <select id="tecnico" value={tecnico} onChange={(e) => setTecnico(e.target.value)}>
         <option value="">Selecciona un técnico</option>
         {tecnicos.length === 0 ? (
           <option disabled>No hay técnicos disponibles</option>

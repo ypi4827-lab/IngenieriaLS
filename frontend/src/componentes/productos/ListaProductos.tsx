@@ -39,7 +39,7 @@ const ListaProductos: React.FC = () => {
         </p>
 
         {imagenesSierras.map((i) => (
-          <img src={i} alt="Sierra cárnica" />
+          <img key={i} src={i} alt="Sierra cárnica" />
         ))}
       </div>
       <div className="producto">
@@ -49,7 +49,7 @@ const ListaProductos: React.FC = () => {
         </p>
 
         {imagenesBalanzas.map((i) => (
-          <img src={i} alt="Balanza comercial" />
+          <img key={i} src={i} alt="Balanza comercial" />
         ))}
       </div>
       {location.pathname === '/productos' && (
