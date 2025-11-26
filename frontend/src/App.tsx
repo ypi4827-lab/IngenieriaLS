@@ -9,7 +9,7 @@ import Registro from './paginas/Registro';
 import IniciarSesion from './paginas/IniciarSesion';
 import Recuperacion from './paginas/Recuperacion';
 import Footer from './componentes/Footer';
-import Cambiarcontraseña from './paginas/Cambiarcontraseña';
+import CambiarContraseña from './paginas/CambiarContraseña';
 import Perfil from './paginas/Perfil';
 import Boton from './componentes/comunes/Boton';
 import Reservas from './paginas/Reservas';
@@ -37,7 +37,7 @@ const App: React.FC = () => {
           path="/cambiarcontraseña"
           element={
             <RutaProtegida>
-              <Cambiarcontraseña />
+              <CambiarContraseña />
             </RutaProtegida>
           }
         />

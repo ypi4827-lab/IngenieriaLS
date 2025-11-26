@@ -6,7 +6,7 @@ import FormularioBase from '../componentes/comunes/FormularioBase';
 import Boton from '../componentes/comunes/Boton';
 import CampoContraseña from '../componentes/comunes/CampoContraseña';
 
-const Cambiarcontraseña: React.FC = () => {
+const CambiarContraseña: React.FC = () => {
   const navigate = useNavigate();
   const [contraseñaNueva, setContraseñaNueva] = useState('');
   const [confirmarContraseña, setConfirmarContraseña] = useState('');
@@ -49,4 +49,4 @@ const Cambiarcontraseña: React.FC = () => {
   );
 };
 
-export default Cambiarcontraseña;
+export default CambiarContraseña;
