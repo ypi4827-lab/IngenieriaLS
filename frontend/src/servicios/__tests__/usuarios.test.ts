@@ -1,10 +1,5 @@
 import API from "../api";
-import {
-  obtenerUsuarios,
-  crearUsuario,
-  actualizarUsuario,
-  eliminarUsuario,
-} from "../usuarios";
+import { obtenerUsuarios, crearUsuario, actualizarUsuario, eliminarUsuario, } from "../usuarios";
 
 vi.mock("../api");
 
