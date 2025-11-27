@@ -110,7 +110,7 @@ exports.solicitarRecuperacion = async (req, res) => {
       html: `
       <h2>Restablecer contraseña</h2>
       <p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>
-      <a href="${link}" target="_blank">Restablecer contraseña</a>
+      <a href="${enlace}" target="_blank">Restablecer contraseña</a>
       <p>El enlace expira en 15 minutos.</p>
     `,
     });
