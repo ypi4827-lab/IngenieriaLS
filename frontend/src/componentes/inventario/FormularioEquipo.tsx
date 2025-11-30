@@ -15,7 +15,7 @@ const FormularioEquipo: React.FC<Props> = ({ onAgregar }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!nombre || !marca) {
-      alert('Los campos nombre, código y marca son obligatorios.');
+      alert('Los campos nombre y marca son obligatorios.');
       return;
     }
     try {
@@ -26,6 +26,7 @@ const FormularioEquipo: React.FC<Props> = ({ onAgregar }) => {
       setEstado('Disponible');
       alert('Equipo agregado exitosamente.');
     } catch (error) {
+      console.log(error);
       alert('Error al agregar el equipo.');
     }
   };
@@ -38,6 +39,7 @@ const FormularioEquipo: React.FC<Props> = ({ onAgregar }) => {
         value={nombre}
         onChange={(e) => setNombre(e.target.value)}
         placeholder="Ej. Multímetro Digital"
+        required
       />
 
       <label>Marca</label>
@@ -46,6 +48,7 @@ const FormularioEquipo: React.FC<Props> = ({ onAgregar }) => {
         value={marca}
         onChange={(e) => setMarca(e.target.value)}
         placeholder="Ej. Fluke"
+        required
       />
 
       <label>Modelo (opcional)</label>
