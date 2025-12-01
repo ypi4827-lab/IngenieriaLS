@@ -7,11 +7,11 @@ vi.stubGlobal('localStorage', {
   removeItem: vi.fn(),
 });
 
-vi.mock('../BotonesTecnico', () => ({
+vi.mock('../BotonesUsuario', () => ({
   default: () => <div>BOTONES-TECNICO</div>,
 }));
 
-test('muestra datos de la reserva y BotonesTecnico si es técnico', () => {
+test('muestra datos de la reserva y BotonesUsuario si es técnico', () => {
   const reserva = {
     _id: '1',
     clienteId: '2',

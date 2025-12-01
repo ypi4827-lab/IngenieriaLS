@@ -18,8 +18,11 @@ const Header: React.FC = () => {
     if (!token) {
       return (
         <nav>
+          <Link to="/">Inicio</Link>
+          <Link to="/servicios">Servicios</Link>
           <Link to="/ingreso">Ingresar</Link>
           <Link to="/registro">Registrarse</Link>
+          <Link to="/contacto">Contacto</Link>
         </nav>
       );
     }
@@ -30,6 +33,7 @@ const Header: React.FC = () => {
           <nav>
             <Link to="/">Inicio</Link>
             <Link to="/servicios">Servicios</Link>
+            <Link to="/reservas">Reservas</Link>
             <Link to="/misreservas">Mis Reservas</Link>
             <Link to="/perfil">Perfil</Link>
             <button onClick={cerrarSesion}>Salir</button>
@@ -60,7 +64,7 @@ const Header: React.FC = () => {
             <Link to="/dashboard">Dashboard</Link>
             <Link to="/gestionusuarios">Usuarios</Link>
             <Link to="/inventario">Inventario</Link>
-            <Link to="/reservas">Reservas</Link>
+            <Link to="/misreservas">Reservas</Link>
             <Link to="/perfil">Perfil</Link>
             <button onClick={cerrarSesion}>Salir</button>
           </nav>

@@ -3,12 +3,14 @@ import { actualizarReserva } from '../../servicios/reservas';
 import Boton from '../comunes/Boton';
 
 interface Props {
+  tipoUsuario?: string;
   reservaId: string;
   estadoActual: string;
   onActualizada: () => void;
 }
 
-const BotonesTecnico: React.FC<Props> = ({
+const BotonesUsuario: React.FC<Props> = ({
+  tipoUsuario,
   reservaId,
   estadoActual,
   onActualizada,
@@ -29,16 +31,24 @@ const BotonesTecnico: React.FC<Props> = ({
 
   return (
     <div className="acciones-tecnico">
-      {estadosDisponibles.map((estado) => (
+      {tipoUsuario === 'cliente' && estadoActual === 'Pendiente' && (
         <Boton
-          key={estado}
-          onClick={() => cambiarEstado(estado)}
-          classProp={`btn-${estado.toLowerCase()}`}
-          texto={estado}
+          onClick={() => cambiarEstado('Cancelada')}
+          classProp={`btn-cancelada`}
+          texto="Cancelar"
         />
-      ))}
+      )}
+      {(tipoUsuario === "administrador" || tipoUsuario === 'tecnico') &&
+        estadosDisponibles.map((estado) => (
+          <Boton
+            key={estado}
+            onClick={() => cambiarEstado(estado)}
+            classProp={`btn-${estado.toLowerCase()}`}
+            texto={estado}
+          />
+        ))}
     </div>
   );
 };
 
-export default BotonesTecnico;
+export default BotonesUsuario;

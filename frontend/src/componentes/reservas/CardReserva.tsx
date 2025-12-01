@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../estilos/misreservas.css';
 import type { Reserva } from '../../servicios/reservas';
-import BotonesTecnico from './BotonesTecnico';
+import BotonesUsuario from './BotonesUsuario';
 
 interface Props {
   reserva: Reserva;
@@ -17,7 +17,7 @@ const CardReserva: React.FC<Props> = ({ reserva }) => {
 
   const nombreTecnico =
     typeof tecnicoAsignado === 'string'
-      ? "Sin nombre"
+      ? 'Sin nombre'
       : tecnicoAsignado?.nombre || '—';
 
   const fechaFormateada = new Date(fechaProgramada).toLocaleDateString(
@@ -34,7 +34,7 @@ const CardReserva: React.FC<Props> = ({ reserva }) => {
     Confirmada: '#2ecc71',
     Finalizada: '#3498db',
     Cancelada: '#e74c3c',
-  }[estado ?? "Pendiente"];
+  }[estado ?? 'Pendiente'];
 
   return (
     <div className="card-reserva">
@@ -56,11 +56,21 @@ const CardReserva: React.FC<Props> = ({ reserva }) => {
         </span>
       </p>
 
-      {usuario.rol === 'tecnico' && (
-        <BotonesTecnico
+      {usuario.rol === 'cliente' && (
+        <BotonesUsuario
+          tipoUsuario="cliente"
           reservaId={reserva._id!}
           onActualizada={actualizarUI}
-          estadoActual={reserva.estado || "Pendiente"}
+          estadoActual={reserva.estado || 'Pendiente'}
+        />
+      )}
+
+      {(usuario.rol === 'administrador' || usuario.rol === 'tecnico') && (
+        <BotonesUsuario
+          tipoUsuario="tecnico"
+          reservaId={reserva._id!}
+          onActualizada={actualizarUI}
+          estadoActual={reserva.estado || 'Pendiente'}
         />
       )}
     </div>

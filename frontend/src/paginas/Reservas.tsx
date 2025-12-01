@@ -26,7 +26,7 @@ const Reservas: React.FC = () => {
         tecnicoAsignado: tecnico,
         fechaProgramada,
         horaProgramada: hora,
-        estado: 'pendiente',
+        estado: 'Pendiente',
       };
 
       const respuesta = await crearReserva(nuevaReserva);
