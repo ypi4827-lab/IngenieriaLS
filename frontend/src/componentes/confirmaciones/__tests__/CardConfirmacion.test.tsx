@@ -1,36 +1,54 @@
-import { render, screen } from "@testing-library/react";
-import CardConfirmacion from "../CardConfirmacion";
+import { render, screen } from '@testing-library/react';
+import CardConfirmacion from '../CardConfirmacion';
+import { obtenerUsuarios } from '../../../servicios/usuarios';
 
-describe("CardConfirmacion", () => {
+vi.mock('../../../servicios/usuarios', () => ({
+  obtenerUsuarios: vi.fn(),
+}));
+
+describe('CardConfirmacion', () => {
   const reservaMock = {
-    servicio: "Mantenimiento eléctrico",
-    tecnico: "Juan Pérez",
-    fechaProgramada: "2025-02-10",
-    hora: "10:00 AM",
-    estado: "Confirmada",
+    servicio: 'Mantenimiento eléctrico',
+    tecnicoAsignado: '123abc',
+    fechaProgramada: '2025-02-10',
+    horaProgramada: '10:00 AM',
+    estado: 'Confirmada',
   };
 
-  test("renderiza correctamente la información de la reserva", () => {
+  test('renderiza correctamente la información de la reserva', async () => {
+    (obtenerUsuarios as any).mockResolvedValue([
+      {
+        _id: '123abc',
+        nombre: 'Juan Pérez',
+        correo: 'juanperez@gmail.com',
+        telefono: '3204567890',
+        rol: 'tecnico',
+        activo: true,
+      },
+    ]);
+
     render(<CardConfirmacion reserva={reservaMock} />);
 
     // Estado
-    expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent("Confirmada");
+    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(
+      'Confirmada'
+    );
 
     // Icono
-    expect(screen.getByText("✅")).toBeInTheDocument();
+    expect(screen.getByText('✅')).toBeInTheDocument();
 
     // Campos
     expect(screen.getByText(/Servicio:/)).toBeInTheDocument();
-    expect(screen.getByText("Mantenimiento eléctrico")).toBeInTheDocument();
+    expect(screen.getByText('Mantenimiento eléctrico')).toBeInTheDocument();
 
     expect(screen.getByText(/Técnico asignado:/)).toBeInTheDocument();
-    expect(screen.getByText("Juan Pérez")).toBeInTheDocument();
+    expect(await screen.findByText('Juan Pérez')).toBeInTheDocument();
 
     expect(screen.getByText(/Fecha:/)).toBeInTheDocument();
-    expect(screen.getByText("2025-02-10")).toBeInTheDocument();
+    expect(screen.getByText('2025-02-10')).toBeInTheDocument();
 
     expect(screen.getByText(/Hora:/)).toBeInTheDocument();
-    expect(screen.getByText("10:00 AM")).toBeInTheDocument();
+    expect(screen.getByText('10:00 AM')).toBeInTheDocument();
 
     // Mensaje final
     expect(

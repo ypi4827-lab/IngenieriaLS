@@ -15,16 +15,17 @@ interface Props {
 }
 
 const CardConfirmacion: React.FC<Props> = ({ reserva }) => {
-  const { servicio, tecnicoAsignado, fechaProgramada, horaProgramada, estado } = reserva;
+  const { servicio, tecnicoAsignado, fechaProgramada, horaProgramada, estado } =
+    reserva;
   const [tecnico, setTecnico] = useState('');
   useEffect(() => {
     const nombreTecnico = async () => {
       const usuarios = await obtenerUsuarios();
-      const tecnico = usuarios.filter((u) => u._id === tecnicoAsignado);
-      setTecnico(tecnico[0].nombre);
+      const tecnico = usuarios.find((u) => u._id === tecnicoAsignado);
+      if (tecnico) setTecnico(tecnico.nombre);
     };
     nombreTecnico();
-  }, []);
+  }, [tecnicoAsignado]);
 
   return (
     <div className="card-confirmacion">
