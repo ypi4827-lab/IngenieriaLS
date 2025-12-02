@@ -20,14 +20,13 @@ const CardReserva: React.FC<Props> = ({ reserva }) => {
       ? 'Sin nombre'
       : tecnicoAsignado?.nombre || '—';
 
-  const fechaFormateada = new Date(fechaProgramada).toLocaleDateString(
-    'es-CO',
-    {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }
-  );
+  const fechaFormateada = new Date(
+    new Date(fechaProgramada).getTime() + 24 * 60 * 60 * 1000
+  ).toLocaleDateString('es-CO', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 
   const colorEstado = {
     Pendiente: '#f1c40f',

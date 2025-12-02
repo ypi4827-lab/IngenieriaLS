@@ -30,6 +30,7 @@ test('muestra datos de la reserva y BotonesUsuario si es técnico', () => {
 
   expect(screen.getByText('REPARACIÓN')).toBeInTheDocument();
   expect(screen.getByText('Juan')).toBeInTheDocument();
+  expect(screen.getByText('10 de enero de 2025')).toBeInTheDocument();
   expect(screen.getByText('10:00')).toBeInTheDocument();
   expect(screen.getByText('PENDIENTE')).toBeInTheDocument();
   expect(screen.getByText('BOTONES-TECNICO')).toBeInTheDocument();

@@ -10,7 +10,7 @@ describe('CardConfirmacion', () => {
   const reservaMock = {
     servicio: 'Mantenimiento eléctrico',
     tecnicoAsignado: '123abc',
-    fechaProgramada: '10/02/2025',
+    fechaProgramada: '2025-10-02',
     horaProgramada: '10:00 AM',
     estado: 'Confirmada',
   };
