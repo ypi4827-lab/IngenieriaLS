@@ -10,7 +10,7 @@ describe('CardConfirmacion', () => {
   const reservaMock = {
     servicio: 'Mantenimiento eléctrico',
     tecnicoAsignado: '123abc',
-    fechaProgramada: '2025-02-10',
+    fechaProgramada: '10/02/2025',
     horaProgramada: '10:00 AM',
     estado: 'Confirmada',
   };
@@ -45,7 +45,7 @@ describe('CardConfirmacion', () => {
     expect(await screen.findByText('Juan Pérez')).toBeInTheDocument();
 
     expect(screen.getByText(/Fecha:/)).toBeInTheDocument();
-    expect(screen.getByText('2025-02-10')).toBeInTheDocument();
+    expect(screen.getByText('2/10/2025')).toBeInTheDocument();
 
     expect(screen.getByText(/Hora:/)).toBeInTheDocument();
     expect(screen.getByText('10:00 AM')).toBeInTheDocument();

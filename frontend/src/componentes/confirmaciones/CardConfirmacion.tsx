@@ -38,7 +38,7 @@ const CardConfirmacion: React.FC<Props> = ({ reserva }) => {
         <strong>Técnico asignado:</strong> {tecnico}
       </p>
       <p>
-        <strong>Fecha:</strong> {fechaProgramada}
+        <strong>Fecha:</strong> {new Date(fechaProgramada).toLocaleDateString('es-CO')}
       </p>
       <p>
         <strong>Hora:</strong> {horaProgramada}
